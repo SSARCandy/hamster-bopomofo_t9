@@ -1,0 +1,270 @@
+keyboards:
+  - name: t9注音
+    isPrimary: false
+    rows:
+      - keys:
+          - action:
+              character:
+                char: "w"
+            width:
+              percentage: 0.16
+            label:
+              text: "ˊ"
+          - action:
+              character:
+                char: "1"
+            width: available
+            label:
+              text: "ㄅㄉㄚ"
+          - action:
+              character:
+                char: "2"
+            width: available
+            label:
+              text: "ㄍㄐㄞ"
+          - action:
+              character:
+                char: "3"
+            width: available
+            label:
+              text: "ㄓㄗㄢㄦ"
+          - action:
+              symbol:
+                char: "="
+            width:
+              percentage: 0.16
+            label:
+              text: "="
+      - keys:
+          - action:
+              character:
+                char: "y"
+            width:
+              percentage: 0.16
+            label:
+              text: "ˇ"
+          - action:
+              character:
+                char: "4"
+            width: available
+            label:
+              text: "ㄆㄊㄛ"
+          - action:
+              character:
+                char: "5"
+            width: available
+            label:
+              text: "ㄎㄑㄟ"
+          - action:
+              character:
+                char: "6"
+            width: available
+            label:
+              text: "ㄔㄘㄣㄧ"
+          - action:
+              keyboardType: t9數字
+            width:
+              percentage: 0.16
+            label:
+              text: "123"
+      - keys:
+          - action:
+              character:
+                char: "q"
+            width:
+              percentage: 0.16
+            label:
+              text: "ˋ"
+          - action:
+              character:
+                char: "7"
+            width: available
+            label:
+              text: "ㄇㄋㄜ"
+          - action:
+              character:
+                char: "8"
+            width: available
+            label:
+              text: "ㄏㄒㄠㄡ"
+          - action:
+              character:
+                char: "9"
+            width: available
+            label:
+              text: "ㄕㄙㄤㄨ"
+          - action: backspace
+            width:
+              percentage: 0.16
+            label:
+              text: "⌫"
+      - keys:
+          - action:
+              character:
+                char: "p"
+            width:
+              percentage: 0.16
+            label:
+              text: "˙"
+          - action:
+              character:
+                char: "0"
+            width: available
+            label:
+              text: "ㄈㄌㄝ"
+          - action: space
+            width: available
+            label:
+              text: "空白"
+          - action:
+              character:
+                char: "v"
+            width: available
+            label:
+              text: "ㄖㄥㄩ"
+          - action: enter
+            width:
+              percentage: 0.16
+            label:
+              text: "↵"
+    buttonInsets:
+      left: 3
+      bottom: 4
+      top: 8
+      right: 3
+
+  - name: t9數字
+    isPrimary: false
+    rows:
+      - keys:
+          - action:
+              symbol:
+                char: "+"
+            width:
+              percentage: 0.16
+            label:
+              text: "+"
+          - action:
+              symbol:
+                char: "1"
+            width: available
+            label:
+              text: "1"
+          - action:
+              symbol:
+                char: "2"
+            width: available
+            label:
+              text: "2"
+          - action:
+              symbol:
+                char: "3"
+            width: available
+            label:
+              text: "3"
+          - action:
+              symbol:
+                char: "="
+            width:
+              percentage: 0.16
+            label:
+              text: "="
+      - keys:
+          - action:
+              symbol:
+                char: "-"
+            width:
+              percentage: 0.16
+            label:
+              text: "-"
+          - action:
+              symbol:
+                char: "4"
+            width: available
+            label:
+              text: "4"
+          - action:
+              symbol:
+                char: "5"
+            width: available
+            label:
+              text: "5"
+          - action:
+              symbol:
+                char: "6"
+            width: available
+            label:
+              text: "6"
+          - action:
+              keyboardType: t9注音
+            width:
+              percentage: 0.16
+            label:
+              text: "中"
+      - keys:
+          - action:
+              symbol:
+                char: "*"
+            width:
+              percentage: 0.16
+            label:
+              text: "*"
+          - action:
+              symbol:
+                char: "7"
+            width: available
+            label:
+              text: "7"
+          - action:
+              symbol:
+                char: "8"
+            width: available
+            label:
+              text: "8"
+          - action:
+              symbol:
+                char: "9"
+            width: available
+            label:
+              text: "9"
+          - action: backspace
+            width:
+              percentage: 0.16
+            label:
+              text: "⌫"
+      - keys:
+          - action:
+              symbol:
+                char: "/"
+            width:
+              percentage: 0.16
+            label:
+              text: "/"
+          - action:
+              symbol:
+                char: ","
+            width: available
+            label:
+              text: ","
+          - action:
+              symbol:
+                char: "0"
+            width: available
+            label:
+              text: "0"
+          - action:
+              symbol:
+                char: "."
+            width: available
+            label:
+              text: "."
+          - action: enter
+            width:
+              percentage: 0.16
+            label:
+              text: "↵"
+    buttonInsets:
+      left: 3
+      bottom: 4
+      top: 8
+      right: 3

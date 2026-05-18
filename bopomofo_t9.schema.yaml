@@ -1,0 +1,141 @@
+schema:
+  schema_id: bopomofo_t9
+  name: 注音九宮格(自訂)
+  version: "5.2"
+
+engine:
+  processors:
+    - ascii_composer
+    - speller
+    - recognizer
+    - key_binder
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - punct_translator
+    - script_translator
+  filters:
+    - simplifier
+    - uniquifier
+
+speller:
+  # 定義可用按鍵
+  alphabet: "1234567890vwyqp"
+  initials: "1234567890vwyqp"
+  use_space: false
+  delimiter: " '"
+  algebra:
+    - xform/^r5$/er5/
+
+    # 聲調預處理：將末尾的聲調數字轉為特殊符號，避免被後面的數字映射吃掉
+    - xform/1$//
+    - xform/2$/W/
+    - xform/3$/Y/
+    - xform/4$/Q/
+    - xform/5$/P/
+
+    # ==============================================
+    # ★ 核心修復：優先處理 yu (魚/元/月/雲) ★
+    # ==============================================
+    - xform/^yu/v/             # yu -> v (ㄩ) [必須放在 yi 規則之前!]
+    - xform/^yi?/i/            # yi -> i (ㄧ)
+    - xform/^wu?/u/            # wu -> u (ㄨ)
+    # ==============================================
+
+    - xform/iu/iou/            # xiu -> xiou (修)
+    - xform/ui/uei/            # gui -> guei (貴)
+    - xform/ong/ung/           # ong -> ung (東)
+
+    # --- 韻母與特殊拼音修正 ---
+    - xform/ing/iG/            # ing -> i + G (行)
+    - xform/ung/uG/            # ung -> u + G (用: yong->iong->iung->iuG)
+
+    - xform/iu/v/              # iuG -> vG (接續處理 用: iuG->vG->ㄩㄥ)
+    - xform/^([jqx])u/$1v/     # ju -> jv (居)
+    - xform/([iuv])n/$1en/     # in -> ien (音)
+
+    - xform/^zhi?/Z/
+    - xform/^chi?/C/
+    - xform/^shi?/S/
+    - xform/^([zcsr])i/$1/
+
+    # --- 韻母代號化 ---
+    - xform/ai/A/
+    - xform/ei/I/
+    - xform/ao/O/
+    - xform/ou/U/
+    - xform/ang/K/
+    - xform/eng/G/
+    - xform/an/M/
+    - xform/en/N/
+    - xform/er/R/
+    - xform/eh/E/
+    - xform/([iv])e/$1E/
+
+    # --- 支援簡拼 (注音首碼) ---
+    - derive/^(.).+$/$1/
+    - derive/^(.).+([WYQP])$/$1$2/
+
+    # --- 自定義按鍵映射 (依照您的清單) ---
+    # 1: ㄅ(b) ㄉ(d) ㄚ(a)
+    - xform/[bda]/1/
+
+    # 2: ㄍ(g) ㄐ(j) ㄞ(A)
+    - xform/[gjA]/2/
+
+    # 3: ㄓ(Z) ㄗ(z) ㄢ(M) ㄦ(R)
+    - xform/[ZzMR]/3/
+
+    # 4: ㄆ(p) ㄊ(t) ㄛ(o)
+    - xform/[pto]/4/
+
+    # 5: ㄎ(k) ㄑ(q) ㄟ(I)
+    - xform/[kqI]/5/
+
+    # 6: ㄔ(C) ㄘ(c) ㄣ(N) ㄧ(i)
+    - xform/[CcNi]/6/
+
+    # 7: ㄇ(m) ㄋ(n) ㄜ(e)
+    - xform/[mne]/7/
+
+    # 8: ㄏ(h) ㄒ(x) ㄠ(O) ㄡ(U)
+    - xform/[hxOU]/8/
+
+    # 9: ㄕ(S) ㄙ(s) ㄤ(K) ㄨ(u)
+    - xform/[SsKu]/9/
+
+    # 7下面: ㄈ(f) ㄌ(l) ㄝ(E) -> 對應代碼 0
+    - xform/[flE]/0/
+
+    # 9下面: ㄖ(r) ㄥ(G) ㄩ(v) -> 對應代碼 v
+    - xform/[rGv]/v/
+
+    # --- 將聲調符號轉為對應的字母 ---
+    - xform/W/w/
+    - xform/Y/y/
+    - xform/Q/q/
+    - xform/P/p/
+    
+    # --- 允許省略聲調 (將帶有聲調的拼音衍生出無聲調的拼音) ---
+    # 這樣在不打聲調時，所有聲調的字都能被視為「完全比對」並依照詞頻排序
+    - derive/[wyqp]$//
+
+translator:
+  dictionary: terra_pinyin
+  prism: bopomofo_t9_custom
+
+key_binder:
+  import_preset: default
+
+recognizer:
+  import_preset: default
+  patterns:
+    abc: "^[1234567890vwyqp]+$"
