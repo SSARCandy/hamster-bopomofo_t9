@@ -215,3 +215,27 @@ keyboards:
     * 介母：`ㄧ`、`ㄨ`、`ㄩ`。
     * 韻母：`ㄚ`、`ㄛ`、`ㄜ`、`ㄝ`、`ㄞ`、`ㄟ`、`ㄠ`、`ㄡ`、`ㄢ`、`ㄣ`、`ㄤ`、`ㄥ`、`ㄦ`。
   - *說明*：若未來需支援介母與韻母之精確碼，需為其定義額外的專屬 ASCII 字母並於 RIME schema 新增 `algebra` 與 `alphabet` 映射規則。
+
+---
+
+## 鍵盤皮膚 (Keyboard Skins)
+
+專為 **Hamster (倉輸入法)** 設計的自定義高端、極簡代碼化面板（100% 原生渲染，零外部圖片負擔）。
+
+### Bopomofo T9 Premium 膚色包
+
+- **皮膚包名稱**: `bopomofo_t9_premium.hskin`
+- **設計哲學**: 
+  - **Light Mode**: 奶油灰藍背景 (`#F0F3F6`) + 象牙白按鍵 + 寶石藍高亮 (`#3B82F6`)。
+  - **Dark Mode**: 極客深邃藍 (`#0F172A`) + 暗岩灰藍按鍵 + 霓虹亮藍高亮 (`#60A5FA`)。
+  - **自動佈局響應**: 完美覆蓋中文九宮格與數字九宮格的橫豎屏。
+
+### 導入與使用步驟
+
+1. **上傳皮膚包**: 
+   - 將 [bopomofo_t9_premium.hskin](file:///c:/Users/ssarc/Documents/GitHub/RIME_T9_ZH/bopomofo_t9_premium.hskin) 上傳至 iCloud `iCloud/Hamster/RIME/Rime/skins/` 或在 iPhone 上透過 AirDrop/分享至倉輸入法導入。
+2. **啟用皮膚**:
+   - 開啟倉 App → 點選 **「鍵盤設定」**。
+   - 點選 **「鍵盤皮膚」**，選擇 **「Bopomofo T9 Premium」** 啟用。
+3. **重新部署**:
+   - 在倉 App 的首頁點選 **「重新部署」** 以使所有外觀與佈局生效。

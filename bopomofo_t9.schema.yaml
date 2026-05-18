@@ -3,11 +3,16 @@ schema:
   name: 注音九宮格(自訂)
   version: "6.0"
 
+switches:
+  - name: prediction
+    states: [ 關閉聯想, 開啟聯想 ]
+    reset: 1
+
 engine:
   processors:
+    - predictor
     - ascii_composer
     - speller
-    - predictor
     - recognizer
     - key_binder
     - punctuator
@@ -200,3 +205,4 @@ predictor:
 
 simplifier:
   opencc_config: s2t.json  # 簡體聯想詞自動轉換為繁體
+  tags: [ abc, prediction ]

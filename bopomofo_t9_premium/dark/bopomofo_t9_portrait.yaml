@@ -1,0 +1,406 @@
+keyboardHeight: 250
+toolbarHeight: 44
+preeditHeight: 25
+
+keyboardStyle:
+  backgroundStyle: keyboardBackgroundStyle
+
+toolbar:
+  backgroundStyle: toolbarBackgroundStyle
+  horizontalCandidateStyle: toolbarHorizontalCandidateStyle
+
+# Styles
+
+wButtonForegroundStyle:
+  textColor: "FFFFFF"
+  text: "ˊ"
+  fontSize: 18
+  fontWeight: bold
+  center: { y: 0.5 }
+
+key1ButtonForegroundStyle:
+  textColor: "FFFFFF"
+  text: "ㄅㄉㄚ"
+  fontSize: 16
+  fontWeight: regular
+  center: { y: 0.5 }
+
+key2ButtonForegroundStyle:
+  textColor: "FFFFFF"
+  text: "ㄍㄐㄞ"
+  fontSize: 16
+  fontWeight: regular
+  center: { y: 0.5 }
+
+key3ButtonForegroundStyle:
+  textColor: "FFFFFF"
+  text: "ㄓㄗㄢㄦ"
+  fontSize: 16
+  fontWeight: regular
+  center: { y: 0.5 }
+
+eButtonForegroundStyle:
+  textColor: "FFFFFF"
+  text: "ˉ"
+  fontSize: 18
+  fontWeight: bold
+  center: { y: 0.5 }
+
+yButtonForegroundStyle:
+  textColor: "FFFFFF"
+  text: "ˇ"
+  fontSize: 18
+  fontWeight: bold
+  center: { y: 0.5 }
+
+key4ButtonForegroundStyle:
+  textColor: "FFFFFF"
+  text: "ㄆㄊㄛ"
+  fontSize: 16
+  fontWeight: regular
+  center: { y: 0.5 }
+
+key5ButtonForegroundStyle:
+  textColor: "FFFFFF"
+  text: "ㄎㄑㄟ"
+  fontSize: 16
+  fontWeight: regular
+  center: { y: 0.5 }
+
+key6ButtonForegroundStyle:
+  textColor: "FFFFFF"
+  text: "ㄔㄘㄣㄧ"
+  fontSize: 16
+  fontWeight: regular
+  center: { y: 0.5 }
+
+numKeyboardButtonForegroundStyle:
+  textColor: "FFFFFF"
+  text: "123"
+  fontSize: 14
+  fontWeight: regular
+  center: { y: 0.5 }
+
+qButtonForegroundStyle:
+  textColor: "FFFFFF"
+  text: "ˋ"
+  fontSize: 18
+  fontWeight: bold
+  center: { y: 0.5 }
+
+key7ButtonForegroundStyle:
+  textColor: "FFFFFF"
+  text: "ㄇㄋㄜ"
+  fontSize: 16
+  fontWeight: regular
+  center: { y: 0.5 }
+
+key8ButtonForegroundStyle:
+  textColor: "FFFFFF"
+  text: "ㄏㄒㄠㄡ"
+  fontSize: 16
+  fontWeight: regular
+  center: { y: 0.5 }
+
+key9ButtonForegroundStyle:
+  textColor: "FFFFFF"
+  text: "ㄕㄙㄤㄨ"
+  fontSize: 16
+  fontWeight: regular
+  center: { y: 0.5 }
+
+deleteButtonForegroundStyle:
+  textColor: "FFFFFF"
+  text: "⌫"
+  fontSize: 18
+  fontWeight: regular
+  center: { y: 0.5 }
+
+pButtonForegroundStyle:
+  textColor: "FFFFFF"
+  text: "˙"
+  fontSize: 18
+  fontWeight: bold
+  center: { y: 0.5 }
+
+key0ButtonForegroundStyle:
+  textColor: "FFFFFF"
+  text: "ㄈㄌㄝ"
+  fontSize: 16
+  fontWeight: regular
+  center: { y: 0.5 }
+
+spaceButtonForegroundStyle:
+  textColor: "FFFFFF"
+  text: "空白"
+  fontSize: 14
+  fontWeight: regular
+  center: { y: 0.5 }
+
+keyVButtonForegroundStyle:
+  textColor: "FFFFFF"
+  text: "ㄖㄥㄩ"
+  fontSize: 16
+  fontWeight: regular
+  center: { y: 0.5 }
+
+enterButtonForegroundStyle:
+  textColor: "FFFFFF"
+  text: "↵"
+  fontSize: 18
+  fontWeight: bold
+  center: { y: 0.5 }
+keyboardBackgroundStyle:
+  type: original
+  normalColor: "2B2B2B"
+
+toolbarBackgroundStyle:
+  type: original
+  normalColor: "2B2B2B"
+
+toolbarHorizontalCandidateStyle:
+  candidateStyle:
+    textColor: "FFFFFF"
+    fontSize: 18
+    fontWeight: medium
+    center: { y: 0.5 }
+  preeditStyle:
+    textColor: "FFFFFF"
+    fontSize: 14
+    center: { y: 0.5 }
+
+alphabeticBackgroundStyle:
+  type: original
+  insets: { top: 6, left: 3, bottom: 6, right: 3 }
+  normalColor: "6A6A6A"
+  highlightColor: "404040"
+  cornerRadius: 5
+  normalLowerEdgeColor: "2A2A2A"
+  highlightLowerEdgeColor: "2A2A2A"
+
+functionalBackgroundStyle:
+  type: original
+  insets: { top: 6, left: 3, bottom: 6, right: 3 }
+  normalColor: "404040"
+  highlightColor: "6A6A6A"
+  cornerRadius: 5
+  normalLowerEdgeColor: "2A2A2A"
+  highlightLowerEdgeColor: "2A2A2A"
+
+enterBackgroundStyle:
+  type: original
+  insets: { top: 6, left: 3, bottom: 6, right: 3 }
+  normalColor: "007AFF"
+  highlightColor: "005BB5"
+  cornerRadius: 5
+  normalLowerEdgeColor: "004080"
+  highlightLowerEdgeColor: "004080"
+
+spaceBackgroundStyle:
+  type: original
+  insets: { top: 6, left: 3, bottom: 6, right: 3 }
+  normalColor: "6A6A6A"
+  highlightColor: "404040"
+  cornerRadius: 5
+  normalLowerEdgeColor: "2A2A2A"
+  highlightLowerEdgeColor: "2A2A2A"
+
+# Keyboard Layout
+keyboardLayout:
+  - HStack:
+      subviews:
+        - Cell: wButton
+        - Cell: key1Button
+        - Cell: key2Button
+        - Cell: key3Button
+        - Cell: eButton
+  - HStack:
+      subviews:
+        - Cell: yButton
+        - Cell: key4Button
+        - Cell: key5Button
+        - Cell: key6Button
+        - Cell: numKeyboardButton
+  - HStack:
+      subviews:
+        - Cell: qButton
+        - Cell: key7Button
+        - Cell: key8Button
+        - Cell: key9Button
+        - Cell: deleteButton
+  - HStack:
+      subviews:
+        - Cell: pButton
+        - Cell: key0Button
+        - Cell: spaceButton
+        - Cell: keyVButton
+        - Cell: enterButton
+
+# Button Keys
+wButton:
+  size: { width: { percentage: 0.16 } }
+  backgroundStyle: functionalBackgroundStyle
+  foregroundStyle: wButtonForegroundStyle
+  action: { character: w }
+
+key1Button:
+  size: { width: { percentage: 0.2266 } }
+  backgroundStyle: alphabeticBackgroundStyle
+  foregroundStyle: key1ButtonForegroundStyle
+  action: { character: 1 }
+  callout:
+    - { label: "ㄅ", action: { character: b } }
+    - { label: "ㄉ", action: { character: d } }
+    - { label: "ㄚ", action: { character: 1 } }
+
+key2Button:
+  size: { width: { percentage: 0.2268 } }
+  backgroundStyle: alphabeticBackgroundStyle
+  foregroundStyle: key2ButtonForegroundStyle
+  action: { character: 2 }
+  callout:
+    - { label: "ㄍ", action: { character: g } }
+    - { label: "ㄐ", action: { character: j } }
+    - { label: "ㄞ", action: { character: 2 } }
+
+key3Button:
+  size: { width: { percentage: 0.2266 } }
+  backgroundStyle: alphabeticBackgroundStyle
+  foregroundStyle: key3ButtonForegroundStyle
+  action: { character: 3 }
+  callout: # Reversed order for Right Column
+    - { label: "ㄦ", action: { character: 3 } }
+    - { label: "ㄢ", action: { character: 3 } }
+    - { label: "ㄗ", action: { character: z } }
+    - { label: "ㄓ", action: { character: Z } }
+
+eButton:
+  size: { width: { percentage: 0.16 } }
+  backgroundStyle: functionalBackgroundStyle
+  foregroundStyle: eButtonForegroundStyle
+  action: { character: e }
+
+yButton:
+  size: { width: { percentage: 0.16 } }
+  backgroundStyle: functionalBackgroundStyle
+  foregroundStyle: yButtonForegroundStyle
+  action: { character: y }
+
+key4Button:
+  size: { width: { percentage: 0.2266 } }
+  backgroundStyle: alphabeticBackgroundStyle
+  foregroundStyle: key4ButtonForegroundStyle
+  action: { character: 4 }
+  callout:
+    - { label: "ㄆ", action: { character: p } }
+    - { label: "ㄊ", action: { character: t } }
+    - { label: "ㄛ", action: { character: 4 } }
+
+key5Button:
+  size: { width: { percentage: 0.2268 } }
+  backgroundStyle: alphabeticBackgroundStyle
+  foregroundStyle: key5ButtonForegroundStyle
+  action: { character: 5 }
+  callout:
+    - { label: "ㄎ", action: { character: k } }
+    - { label: "ㄑ", action: { character: q } }
+    - { label: "ㄟ", action: { character: 5 } }
+
+key6Button:
+  size: { width: { percentage: 0.2266 } }
+  backgroundStyle: alphabeticBackgroundStyle
+  foregroundStyle: key6ButtonForegroundStyle
+  action: { character: 6 }
+  callout: # Reversed order for Right Column
+    - { label: "ㄧ", action: { character: 6 } }
+    - { label: "ㄣ", action: { character: 6 } }
+    - { label: "ㄘ", action: { character: c } }
+    - { label: "ㄔ", action: { character: C } }
+
+numKeyboardButton:
+  size: { width: { percentage: 0.16 } }
+  backgroundStyle: functionalBackgroundStyle
+  foregroundStyle: numKeyboardButtonForegroundStyle
+  action: { keyboardType: numeric }
+
+qButton:
+  size: { width: { percentage: 0.16 } }
+  backgroundStyle: functionalBackgroundStyle
+  foregroundStyle: qButtonForegroundStyle
+  action: { character: q }
+
+key7Button:
+  size: { width: { percentage: 0.2266 } }
+  backgroundStyle: alphabeticBackgroundStyle
+  foregroundStyle: key7ButtonForegroundStyle
+  action: { character: 7 }
+  callout:
+    - { label: "ㄇ", action: { character: m } }
+    - { label: "ㄋ", action: { character: n } }
+    - { label: "ㄜ", action: { character: 7 } }
+
+key8Button:
+  size: { width: { percentage: 0.2268 } }
+  backgroundStyle: alphabeticBackgroundStyle
+  foregroundStyle: key8ButtonForegroundStyle
+  action: { character: 8 }
+  callout:
+    - { label: "ㄏ", action: { character: h } }
+    - { label: "ㄒ", action: { character: x } }
+    - { label: "ㄠ", action: { character: 8 } }
+    - { label: "ㄡ", action: { character: 8 } }
+
+key9Button:
+  size: { width: { percentage: 0.2266 } }
+  backgroundStyle: alphabeticBackgroundStyle
+  foregroundStyle: key9ButtonForegroundStyle
+  action: { character: 9 }
+  callout: # Reversed order for Right Column
+    - { label: "ㄨ", action: { character: 9 } }
+    - { label: "ㄤ", action: { character: 9 } }
+    - { label: "ㄙ", action: { character: s } }
+    - { label: "ㄕ", action: { character: S } }
+
+deleteButton:
+  size: { width: { percentage: 0.16 } }
+  backgroundStyle: functionalBackgroundStyle
+  foregroundStyle: deleteButtonForegroundStyle
+  action: backspace
+
+pButton:
+  size: { width: { percentage: 0.16 } }
+  backgroundStyle: functionalBackgroundStyle
+  foregroundStyle: pButtonForegroundStyle
+  action: { character: p }
+
+key0Button:
+  size: { width: { percentage: 0.2266 } }
+  backgroundStyle: alphabeticBackgroundStyle
+  foregroundStyle: key0ButtonForegroundStyle
+  action: { character: 0 }
+  callout:
+    - { label: "ㄈ", action: { character: f } }
+    - { label: "ㄌ", action: { character: l } }
+    - { label: "ㄝ", action: { character: 0 } }
+
+spaceButton:
+  size: { width: { percentage: 0.2268 } }
+  backgroundStyle: spaceBackgroundStyle
+  foregroundStyle: spaceButtonForegroundStyle
+  action: space
+
+keyVButton:
+  size: { width: { percentage: 0.2266 } }
+  backgroundStyle: alphabeticBackgroundStyle
+  foregroundStyle: keyVButtonForegroundStyle
+  action: { character: v }
+  callout: # Reversed order for Right Column
+    - { label: "ㄩ", action: { character: v } }
+    - { label: "ㄥ", action: { character: v } }
+    - { label: "ㄖ", action: { character: r } }
+
+enterButton:
+  size: { width: { percentage: 0.16 } }
+  backgroundStyle: enterBackgroundStyle
+  foregroundStyle: enterButtonForegroundStyle
+  action: enter

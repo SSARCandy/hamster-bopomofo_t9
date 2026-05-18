@@ -1,0 +1,34 @@
+author: ssarc
+name: "Bopomofo T9 Premium"
+pinyin:
+  iPhone:
+    portrait: bopomofo_t9_portrait
+    landscape: bopomofo_t9_landscape
+  iPad:
+    portrait: bopomofo_t9_portrait
+    landscape: bopomofo_t9_landscape
+  floating: bopomofo_t9_portrait
+alphabetic:
+  iPhone:
+    portrait: bopomofo_t9_portrait
+    landscape: bopomofo_t9_landscape
+  iPad:
+    portrait: bopomofo_t9_portrait
+    landscape: bopomofo_t9_landscape
+  floating: bopomofo_t9_portrait
+numeric:
+  iPhone:
+    portrait: bopomofo_t9_numeric_portrait
+    landscape: bopomofo_t9_numeric_landscape
+  iPad:
+    portrait: bopomofo_t9_numeric_portrait
+    landscape: bopomofo_t9_numeric_landscape
+  floating: bopomofo_t9_numeric_portrait
+symbolic:
+  iPhone:
+    portrait: bopomofo_t9_numeric_portrait
+    landscape: bopomofo_t9_numeric_landscape
+  iPad:
+    portrait: bopomofo_t9_numeric_portrait
+    landscape: bopomofo_t9_numeric_landscape
+  floating: bopomofo_t9_numeric_portrait

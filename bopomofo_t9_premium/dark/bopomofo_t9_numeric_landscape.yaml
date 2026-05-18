@@ -1,0 +1,349 @@
+keyboardHeight: 150
+toolbarHeight: 38
+preeditHeight: 20
+
+keyboardStyle:
+  backgroundStyle: keyboardBackgroundStyle
+
+toolbar:
+  backgroundStyle: toolbarBackgroundStyle
+  horizontalCandidateStyle: toolbarHorizontalCandidateStyle
+
+# Styles
+
+numAddButtonForegroundStyle:
+  textColor: "FFFFFF"
+  text: "+"
+  fontSize: 18
+  fontWeight: regular
+  center: { y: 0.5 }
+
+numEqualButtonForegroundStyle:
+  textColor: "FFFFFF"
+  text: "="
+  fontSize: 18
+  fontWeight: regular
+  center: { y: 0.5 }
+
+numSubButtonForegroundStyle:
+  textColor: "FFFFFF"
+  text: "-"
+  fontSize: 18
+  fontWeight: regular
+  center: { y: 0.5 }
+
+numSwitchButtonForegroundStyle:
+  textColor: "FFFFFF"
+  text: "中"
+  fontSize: 14
+  fontWeight: bold
+  center: { y: 0.5 }
+
+numMulButtonForegroundStyle:
+  textColor: "FFFFFF"
+  text: "*"
+  fontSize: 18
+  fontWeight: regular
+  center: { y: 0.5 }
+
+numDivButtonForegroundStyle:
+  textColor: "FFFFFF"
+  text: "/"
+  fontSize: 16
+  fontWeight: regular
+  center: { y: 0.5 }
+
+numCommaButtonForegroundStyle:
+  textColor: "FFFFFF"
+  text: ","
+  fontSize: 16
+  fontWeight: regular
+  center: { y: 0.5 }
+
+numDotButtonForegroundStyle:
+  textColor: "FFFFFF"
+  text: "."
+  fontSize: 16
+  fontWeight: regular
+  center: { y: 0.5 }
+
+num1ButtonForegroundStyle:
+  textColor: "FFFFFF"
+  text: "1"
+  fontSize: 16
+  fontWeight: regular
+  center: { y: 0.5 }
+
+num2ButtonForegroundStyle:
+  textColor: "FFFFFF"
+  text: "2"
+  fontSize: 16
+  fontWeight: regular
+  center: { y: 0.5 }
+
+num3ButtonForegroundStyle:
+  textColor: "FFFFFF"
+  text: "3"
+  fontSize: 16
+  fontWeight: regular
+  center: { y: 0.5 }
+
+num4ButtonForegroundStyle:
+  textColor: "FFFFFF"
+  text: "4"
+  fontSize: 16
+  fontWeight: regular
+  center: { y: 0.5 }
+
+num5ButtonForegroundStyle:
+  textColor: "FFFFFF"
+  text: "5"
+  fontSize: 16
+  fontWeight: regular
+  center: { y: 0.5 }
+
+num6ButtonForegroundStyle:
+  textColor: "FFFFFF"
+  text: "6"
+  fontSize: 16
+  fontWeight: regular
+  center: { y: 0.5 }
+
+num7ButtonForegroundStyle:
+  textColor: "FFFFFF"
+  text: "7"
+  fontSize: 16
+  fontWeight: regular
+  center: { y: 0.5 }
+
+num8ButtonForegroundStyle:
+  textColor: "FFFFFF"
+  text: "8"
+  fontSize: 16
+  fontWeight: regular
+  center: { y: 0.5 }
+
+num9ButtonForegroundStyle:
+  textColor: "FFFFFF"
+  text: "9"
+  fontSize: 16
+  fontWeight: regular
+  center: { y: 0.5 }
+
+num0ButtonForegroundStyle:
+  textColor: "FFFFFF"
+  text: "0"
+  fontSize: 16
+  fontWeight: regular
+  center: { y: 0.5 }
+
+deleteButtonForegroundStyle:
+  textColor: "FFFFFF"
+  text: "⌫"
+  fontSize: 16
+  fontWeight: regular
+  center: { y: 0.5 }
+
+enterButtonForegroundStyle:
+  textColor: "FFFFFF"
+  text: "↵"
+  fontSize: 16
+  fontWeight: bold
+  center: { y: 0.5 }
+keyboardBackgroundStyle:
+  type: original
+  normalColor: "2B2B2B"
+
+toolbarBackgroundStyle:
+  type: original
+  normalColor: "2B2B2B"
+
+toolbarHorizontalCandidateStyle:
+  candidateStyle:
+    textColor: "FFFFFF"
+    fontSize: 16
+    fontWeight: medium
+    center: { y: 0.5 }
+  preeditStyle:
+    textColor: "FFFFFF"
+    fontSize: 13
+    center: { y: 0.5 }
+
+alphabeticBackgroundStyle:
+  type: original
+  insets: { top: 6, left: 3, bottom: 6, right: 3 }
+  normalColor: "6A6A6A"
+  highlightColor: "404040"
+  cornerRadius: 5
+  normalLowerEdgeColor: "2A2A2A"
+  highlightLowerEdgeColor: "2A2A2A"
+
+functionalBackgroundStyle:
+  type: original
+  insets: { top: 6, left: 3, bottom: 6, right: 3 }
+  normalColor: "404040"
+  highlightColor: "6A6A6A"
+  cornerRadius: 5
+  normalLowerEdgeColor: "2A2A2A"
+  highlightLowerEdgeColor: "2A2A2A"
+
+enterBackgroundStyle:
+  type: original
+  insets: { top: 6, left: 3, bottom: 6, right: 3 }
+  normalColor: "007AFF"
+  highlightColor: "005BB5"
+  cornerRadius: 5
+  normalLowerEdgeColor: "004080"
+  highlightLowerEdgeColor: "004080"
+
+# Keyboard Layout
+keyboardLayout:
+  - HStack:
+      subviews:
+        - Cell: numAddButton
+        - Cell: num1Button
+        - Cell: num2Button
+        - Cell: num3Button
+        - Cell: numEqualButton
+  - HStack:
+      subviews:
+        - Cell: numSubButton
+        - Cell: num4Button
+        - Cell: num5Button
+        - Cell: num6Button
+        - Cell: numSwitchButton
+  - HStack:
+      subviews:
+        - Cell: numMulButton
+        - Cell: num7Button
+        - Cell: num8Button
+        - Cell: num9Button
+        - Cell: deleteButton
+  - HStack:
+      subviews:
+        - Cell: numDivButton
+        - Cell: numCommaButton
+        - Cell: num0Button
+        - Cell: numDotButton
+        - Cell: enterButton
+
+# Button Keys
+numAddButton:
+  size: { width: { percentage: 0.16 } }
+  backgroundStyle: functionalBackgroundStyle
+  foregroundStyle: numAddButtonForegroundStyle
+  action: { symbol: "+" }
+
+numEqualButton:
+  size: { width: { percentage: 0.16 } }
+  backgroundStyle: functionalBackgroundStyle
+  foregroundStyle: numEqualButtonForegroundStyle
+  action: { symbol: "=" }
+
+numSubButton:
+  size: { width: { percentage: 0.16 } }
+  backgroundStyle: functionalBackgroundStyle
+  foregroundStyle: numSubButtonForegroundStyle
+  action: { symbol: "-" }
+
+numSwitchButton:
+  size: { width: { percentage: 0.16 } }
+  backgroundStyle: functionalBackgroundStyle
+  foregroundStyle: numSwitchButtonForegroundStyle
+  action: { keyboardType: pinyin }
+
+numMulButton:
+  size: { width: { percentage: 0.16 } }
+  backgroundStyle: functionalBackgroundStyle
+  foregroundStyle: numMulButtonForegroundStyle
+  action: { symbol: "*" }
+
+numDivButton:
+  size: { width: { percentage: 0.16 } }
+  backgroundStyle: functionalBackgroundStyle
+  foregroundStyle: numDivButtonForegroundStyle
+  action: { symbol: "/" }
+
+numCommaButton:
+  size: { width: { percentage: 0.2266 } }
+  backgroundStyle: alphabeticBackgroundStyle
+  foregroundStyle: numCommaButtonForegroundStyle
+  action: { symbol: "," }
+
+numDotButton:
+  size: { width: { percentage: 0.2266 } }
+  backgroundStyle: alphabeticBackgroundStyle
+  foregroundStyle: numDotButtonForegroundStyle
+  action: { symbol: "." }
+
+num1Button:
+  size: { width: { percentage: 0.2266 } }
+  backgroundStyle: alphabeticBackgroundStyle
+  foregroundStyle: num1ButtonForegroundStyle
+  action: { symbol: 1 }
+
+num2Button:
+  size: { width: { percentage: 0.2268 } }
+  backgroundStyle: alphabeticBackgroundStyle
+  foregroundStyle: num2ButtonForegroundStyle
+  action: { symbol: 2 }
+
+num3Button:
+  size: { width: { percentage: 0.2266 } }
+  backgroundStyle: alphabeticBackgroundStyle
+  foregroundStyle: num3ButtonForegroundStyle
+  action: { symbol: 3 }
+
+num4Button:
+  size: { width: { percentage: 0.2266 } }
+  backgroundStyle: alphabeticBackgroundStyle
+  foregroundStyle: num4ButtonForegroundStyle
+  action: { symbol: 4 }
+
+num5Button:
+  size: { width: { percentage: 0.2268 } }
+  backgroundStyle: alphabeticBackgroundStyle
+  foregroundStyle: num5ButtonForegroundStyle
+  action: { symbol: 5 }
+
+num6Button:
+  size: { width: { percentage: 0.2266 } }
+  backgroundStyle: alphabeticBackgroundStyle
+  foregroundStyle: num6ButtonForegroundStyle
+  action: { symbol: 6 }
+
+num7Button:
+  size: { width: { percentage: 0.2266 } }
+  backgroundStyle: alphabeticBackgroundStyle
+  foregroundStyle: num7ButtonForegroundStyle
+  action: { symbol: 7 }
+
+num8Button:
+  size: { width: { percentage: 0.2268 } }
+  backgroundStyle: alphabeticBackgroundStyle
+  foregroundStyle: num8ButtonForegroundStyle
+  action: { symbol: 8 }
+
+num9Button:
+  size: { width: { percentage: 0.2266 } }
+  backgroundStyle: alphabeticBackgroundStyle
+  foregroundStyle: num9ButtonForegroundStyle
+  action: { symbol: 9 }
+
+num0Button:
+  size: { width: { percentage: 0.2268 } }
+  backgroundStyle: alphabeticBackgroundStyle
+  foregroundStyle: num0ButtonForegroundStyle
+  action: { symbol: 0 }
+
+deleteButton:
+  size: { width: { percentage: 0.16 } }
+  backgroundStyle: functionalBackgroundStyle
+  foregroundStyle: deleteButtonForegroundStyle
+  action: backspace
+
+enterButton:
+  size: { width: { percentage: 0.16 } }
+  backgroundStyle: enterBackgroundStyle
+  foregroundStyle: enterButtonForegroundStyle
+  action: enter
