@@ -17,11 +17,11 @@ Custom RIME input method schema for T9 (3x4) Bopomofo layout, specifically optim
 
 ### Tone Filtering
 The schema uses specific lowercase ASCII characters to map Bopomofo tone marks, specifically chosen to avoid any conflicts with Bopomofo-to-numeric key mappings:
+- **Tone 1 (ˉ)**: Mapped to `e` (used for precise tone filtering).
 - **Tone 2 (ˊ)**: Mapped to `w`
 - **Tone 3 (ˇ)**: Mapped to `y`
 - **Tone 4 (ˋ)**: Mapped to `q`
 - **Tone 5 (˙)**: Mapped to `p`
-- **Tone 1**: Implicit/No mark.
 
 ### Key Mapping Logic
 The `speller/algebra` in the schema file maps Bopomofo symbols to numeric keys:
@@ -206,3 +206,12 @@ keyboards:
 - `processByRIME: true`（預設）表示按鍵輸入送入 RIME；`false` 直接上屏（適合符號鍵）。
 - 上傳方案文件後必須**重新部署**才生效。
 - 詞庫修改後若啟用 `overrideDictFiles: true`，重新部署會覆蓋用戶自造詞；如需保留請設為 `false`。
+- **精確聲母輸入 (Callout)**：Hamster 對非 ASCII 字元（如直接傳送 `ㄅ`）的 `character` action 會直接上屏而不過 RIME。因此，需使用 ASCII 聲母精確碼（如 `b`, `d`, `g` 等）傳送，並由 RIME 端的 `algebra` 進行精確匹配與 `derive` 模糊化。
+- **氣泡選單方向與順序 (Callout Alignment)**：iOS 鍵盤在右側的按鍵（例如 T9 鍵盤的第 3 列：`3`、`6`、`9`、`v`），其長按彈出的氣泡會**向左展開**。為了確保畫面上的視覺順序依然是從左到右（與按鈕標籤如 `ㄓㄗㄢㄦ` 一致），在 YAML 裡的 `callout` 陣列順序必須**反轉**定義。
+- **精確碼覆蓋範圍 (Callout Precision)**：
+  - **聲母 (Initials)**：**支援精確輸入**。長按時送出對應 ASCII 字母做精確篩選：
+    * `ㄅ(b)`、`ㄉ(d)`、`ㄍ(g)`、`ㄐ(j)`、`ㄓ(Z)`、`ㄗ(z)`、`ㄆ(p)`、`ㄊ(t)`、`ㄎ(k)`、`ㄑ(q)`、`ㄔ(C)`、`ㄘ(c)`、`ㄇ(m)`、`ㄋ(n)`、`ㄏ(h)`、`ㄒ(x)`、`ㄕ(S)`、`ㄙ(s)`、`ㄈ(f)`、`ㄌ(l)`、`ㄖ(r)`。
+  - **介母與韻母 (Medials & Finals)**：**僅支援模糊輸入**。長按時僅送出對應的數字模糊碼（同直接點擊該鍵）：
+    * 介母：`ㄧ`、`ㄨ`、`ㄩ`。
+    * 韻母：`ㄚ`、`ㄛ`、`ㄜ`、`ㄝ`、`ㄞ`、`ㄟ`、`ㄠ`、`ㄡ`、`ㄢ`、`ㄣ`、`ㄤ`、`ㄥ`、`ㄦ`。
+  - *說明*：若未來需支援介母與韻母之精確碼，需為其定義額外的專屬 ASCII 字母並於 RIME schema 新增 `algebra` 與 `alphabet` 映射規則。

@@ -55,29 +55,29 @@ keyboards:
             label:
               text: "ㄓㄗㄢㄦ"
             callout:
-              - label: "ㄦ"
-                action:
-                  character:
-                    char: "3"
-              - label: "ㄢ"
-                action:
-                  character:
-                    char: "3"
-              - label: "ㄗ"
-                action:
-                  character:
-                    char: "z"
               - label: "ㄓ"
                 action:
                   character:
                     char: "Z"
+              - label: "ㄗ"
+                action:
+                  character:
+                    char: "z"
+              - label: "ㄢ"
+                action:
+                  character:
+                    char: "3"
+              - label: "ㄦ"
+                action:
+                  character:
+                    char: "3"
           - action:
-              symbol:
-                char: "="
+              character:
+                char: "e"
             width:
               percentage: 0.16
             label:
-              text: "="
+              text: "ˉ"
       - keys:
           - action:
               character:
@@ -131,22 +131,22 @@ keyboards:
             label:
               text: "ㄔㄘㄣㄧ"
             callout:
-              - label: "ㄧ"
-                action:
-                  character:
-                    char: "6"
-              - label: "ㄣ"
-                action:
-                  character:
-                    char: "6"
-              - label: "ㄘ"
-                action:
-                  character:
-                    char: "c"
               - label: "ㄔ"
                 action:
                   character:
                     char: "C"
+              - label: "ㄘ"
+                action:
+                  character:
+                    char: "c"
+              - label: "ㄣ"
+                action:
+                  character:
+                    char: "6"
+              - label: "ㄧ"
+                action:
+                  character:
+                    char: "6"
           - action:
               keyboardType: t9數字
             width:
@@ -210,22 +210,22 @@ keyboards:
             label:
               text: "ㄕㄙㄤㄨ"
             callout:
-              - label: "ㄨ"
-                action:
-                  character:
-                    char: "9"
-              - label: "ㄤ"
-                action:
-                  character:
-                    char: "9"
-              - label: "ㄙ"
-                action:
-                  character:
-                    char: "s"
               - label: "ㄕ"
                 action:
                   character:
                     char: "S"
+              - label: "ㄙ"
+                action:
+                  character:
+                    char: "s"
+              - label: "ㄤ"
+                action:
+                  character:
+                    char: "9"
+              - label: "ㄨ"
+                action:
+                  character:
+                    char: "9"
           - action: backspace
             width:
               percentage: 0.16
@@ -269,18 +269,18 @@ keyboards:
             label:
               text: "ㄖㄥㄩ"
             callout:
-              - label: "ㄩ"
-                action:
-                  character:
-                    char: "v"
-              - label: "ㄥ"
-                action:
-                  character:
-                    char: "v"
               - label: "ㄖ"
                 action:
                   character:
                     char: "r"
+              - label: "ㄥ"
+                action:
+                  character:
+                    char: "v"
+              - label: "ㄩ"
+                action:
+                  character:
+                    char: "v"
           - action: enter
             width:
               percentage: 0.16
