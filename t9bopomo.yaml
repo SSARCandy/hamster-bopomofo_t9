@@ -20,11 +20,11 @@ keyboards:
               - label: "ㄅ"
                 action:
                   character:
-                    char: "B"
+                    char: "b"
               - label: "ㄉ"
                 action:
                   character:
-                    char: "D"
+                    char: "d"
               - label: "ㄚ"
                 action:
                   character:
@@ -39,11 +39,11 @@ keyboards:
               - label: "ㄍ"
                 action:
                   character:
-                    char: "2"
+                    char: "g"
               - label: "ㄐ"
                 action:
                   character:
-                    char: "J"
+                    char: "j"
               - label: "ㄞ"
                 action:
                   character:
@@ -55,11 +55,7 @@ keyboards:
             label:
               text: "ㄓㄗㄢㄦ"
             callout:
-              - label: "ㄓ"
-                action:
-                  character:
-                    char: "3"
-              - label: "ㄗ"
+              - label: "ㄦ"
                 action:
                   character:
                     char: "3"
@@ -67,10 +63,14 @@ keyboards:
                 action:
                   character:
                     char: "3"
-              - label: "ㄦ"
+              - label: "ㄗ"
                 action:
                   character:
-                    char: "3"
+                    char: "z"
+              - label: "ㄓ"
+                action:
+                  character:
+                    char: "Z"
           - action:
               symbol:
                 char: "="
@@ -96,11 +96,11 @@ keyboards:
               - label: "ㄆ"
                 action:
                   character:
-                    char: "4"
+                    char: "p"
               - label: "ㄊ"
                 action:
                   character:
-                    char: "T"
+                    char: "t"
               - label: "ㄛ"
                 action:
                   character:
@@ -115,11 +115,11 @@ keyboards:
               - label: "ㄎ"
                 action:
                   character:
-                    char: "5"
+                    char: "k"
               - label: "ㄑ"
                 action:
                   character:
-                    char: "5"
+                    char: "q"
               - label: "ㄟ"
                 action:
                   character:
@@ -131,11 +131,7 @@ keyboards:
             label:
               text: "ㄔㄘㄣㄧ"
             callout:
-              - label: "ㄔ"
-                action:
-                  character:
-                    char: "6"
-              - label: "ㄘ"
+              - label: "ㄧ"
                 action:
                   character:
                     char: "6"
@@ -143,10 +139,14 @@ keyboards:
                 action:
                   character:
                     char: "6"
-              - label: "ㄧ"
+              - label: "ㄘ"
                 action:
                   character:
-                    char: "6"
+                    char: "c"
+              - label: "ㄔ"
+                action:
+                  character:
+                    char: "C"
           - action:
               keyboardType: t9數字
             width:
@@ -171,11 +171,11 @@ keyboards:
               - label: "ㄇ"
                 action:
                   character:
-                    char: "7"
+                    char: "m"
               - label: "ㄋ"
                 action:
                   character:
-                    char: "7"
+                    char: "n"
               - label: "ㄜ"
                 action:
                   character:
@@ -190,11 +190,11 @@ keyboards:
               - label: "ㄏ"
                 action:
                   character:
-                    char: "H"
+                    char: "h"
               - label: "ㄒ"
                 action:
                   character:
-                    char: "X"
+                    char: "x"
               - label: "ㄠ"
                 action:
                   character:
@@ -210,11 +210,7 @@ keyboards:
             label:
               text: "ㄕㄙㄤㄨ"
             callout:
-              - label: "ㄕ"
-                action:
-                  character:
-                    char: "9"
-              - label: "ㄙ"
+              - label: "ㄨ"
                 action:
                   character:
                     char: "9"
@@ -222,10 +218,14 @@ keyboards:
                 action:
                   character:
                     char: "9"
-              - label: "ㄨ"
+              - label: "ㄙ"
                 action:
                   character:
-                    char: "9"
+                    char: "s"
+              - label: "ㄕ"
+                action:
+                  character:
+                    char: "S"
           - action: backspace
             width:
               percentage: 0.16
@@ -249,11 +249,11 @@ keyboards:
               - label: "ㄈ"
                 action:
                   character:
-                    char: "F"
+                    char: "f"
               - label: "ㄌ"
                 action:
                   character:
-                    char: "L"
+                    char: "l"
               - label: "ㄝ"
                 action:
                   character:
@@ -269,7 +269,7 @@ keyboards:
             label:
               text: "ㄖㄥㄩ"
             callout:
-              - label: "ㄖ"
+              - label: "ㄩ"
                 action:
                   character:
                     char: "v"
@@ -277,10 +277,10 @@ keyboards:
                 action:
                   character:
                     char: "v"
-              - label: "ㄩ"
+              - label: "ㄖ"
                 action:
                   character:
-                    char: "V"
+                    char: "r"
           - action: enter
             width:
               percentage: 0.16

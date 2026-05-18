@@ -1,7 +1,7 @@
 schema:
   schema_id: bopomofo_t9
   name: 注音九宮格(自訂)
-  version: "5.2"
+  version: "6.0"
 
 engine:
   processors:
@@ -27,50 +27,45 @@ engine:
     - uniquifier
 
 speller:
-  # 定義可用按鍵
-  # T9數字鍵 + 聲調鍵 + 9個精確注音大寫碼 (B D F H J L T X V)
-  alphabet: "1234567890vwyqpBDFHJLTXV"
-  initials: "1234567890vwyqpBDFHJLTXV"
+  # T9數字鍵 + 聲調鍵 + 所有聲母精確碼(ASCII字母)
+  # 精確碼: b(ㄅ) d(ㄉ) g(ㄍ) j(ㄐ) Z(ㄓ) z(ㄗ) p(ㄆ) t(ㄊ) k(ㄎ) q(ㄑ)
+  #         C(ㄔ) c(ㄘ) m(ㄇ) n(ㄋ) h(ㄏ) x(ㄒ) S(ㄕ) s(ㄙ) f(ㄈ) l(ㄌ) r(ㄖ)
+  alphabet: "1234567890vwyqpbdgjZzptkkCcmnhxSsflr"
+  initials: "1234567890vwyqpbdgjZzptkkCcmnhxSsflr"
   use_space: false
   delimiter: " '"
   algebra:
     - xform/^r5$/er5/
 
-    # 聲調預處理：將末尾的聲調數字轉為特殊符號，避免被後面的數字映射吃掉
+    # 聲調預處理
     - xform/1$//
     - xform/2$/W/
     - xform/3$/Y/
     - xform/4$/Q/
     - xform/5$/P/
 
-    # (舊 F/H 規則已移除，見下方正確 derive 方案)
+    # 介母
+    - xform/^yu/v/
+    - xform/^yi?/i/
+    - xform/^wu?/u/
 
-    # ==============================================
-    # ★ 核心修復：優先處理 yu (魚/元/月/雲) ★
-    # ==============================================
-    - xform/^yu/v/             # yu -> v (ㄩ) [必須放在 yi 規則之前!]
-    - xform/^yi?/i/            # yi -> i (ㄧ)
-    - xform/^wu?/u/            # wu -> u (ㄨ)
-    # ==============================================
+    # 拼音修正
+    - xform/iu/iou/
+    - xform/ui/uei/
+    - xform/ong/ung/
+    - xform/ing/iG/
+    - xform/ung/uG/
+    - xform/iu/v/
+    - xform/^([jqx])u/$1v/
+    - xform/([iuv])n/$1en/
 
-    - xform/iu/iou/            # xiu -> xiou (修)
-    - xform/ui/uei/            # gui -> guei (貴)
-    - xform/ong/ung/           # ong -> ung (東)
-
-    # --- 韻母與特殊拼音修正 ---
-    - xform/ing/iG/            # ing -> i + G (行)
-    - xform/ung/uG/            # ung -> u + G (用: yong->iong->iung->iuG)
-
-    - xform/iu/v/              # iuG -> vG (接續處理 用: iuG->vG->ㄩㄥ)
-    - xform/^([jqx])u/$1v/     # ju -> jv (居)
-    - xform/([iuv])n/$1en/     # in -> ien (音)
-
+    # 聲母特殊處理(保留大寫作為精確碼)
     - xform/^zhi?/Z/
     - xform/^chi?/C/
     - xform/^shi?/S/
     - xform/^([zcsr])i/$1/
 
-    # --- 韻母代號化 ---
+    # 韻母代號化
     - xform/ai/A/
     - xform/ei/I/
     - xform/ao/O/
@@ -83,66 +78,54 @@ speller:
     - xform/eh/E/
     - xform/([iv])e/$1E/
 
-    # === 精確注音 derive（必須在韻母代號化之後、數字映射之前）===
-    # 使用「自由大寫字母」(B D F H J L T X V)，這些字母不在任何後續 xform 的字元集中，
-    # 因此 derive 產生的大寫前綴在數字映射後仍能存活，形成可匹配的精確碼。
-    - derive/^b/B/    # ㄅ 精確碼 B
-    - derive/^d/D/    # ㄉ 精確碼 D
-    - derive/^f/F/    # ㄈ 精確碼 F
-    - derive/^h/H/    # ㄏ 精確碼 H
-    - derive/^j/J/    # ㄐ 精確碼 J
-    - derive/^l/L/    # ㄌ 精確碼 L
-    - derive/^t/T/    # ㄊ 精確碼 T
-    - derive/^x/X/    # ㄒ 精確碼 X
-    - derive/^v/V/    # ㄩ 精確碼 V
+    # === 韻母/介母 → 數字 (聲母保留字母作為精確碼) ===
+    - xform/a/1/
+    - xform/A/2/
+    - xform/[MR]/3/
+    - xform/o/4/
+    - xform/I/5/
+    - xform/[Ni]/6/
+    - xform/e/7/
+    - xform/[OU]/8/
+    - xform/[Ku]/9/
+    - xform/E/0/
+    - xform/[Gv]/v/
 
-    # --- 支援簡拼 (注音首碼) ---
-    - derive/^(.).+$/$1/
-    - derive/^(.).+([WYQP])$/$1$2/
-
-    # --- 自定義按鍵映射 (依照您的清單) ---
-    # 1: ㄅ(b) ㄉ(d) ㄚ(a)
-    - xform/[bda]/1/
-
-    # 2: ㄍ(g) ㄐ(j) ㄞ(A)
-    - xform/[gjA]/2/
-
-    # 3: ㄓ(Z) ㄗ(z) ㄢ(M) ㄦ(R)
-    - xform/[ZzMR]/3/
-
-    # 4: ㄆ(p) ㄊ(t) ㄛ(o)
-    - xform/[pto]/4/
-
-    # 5: ㄎ(k) ㄑ(q) ㄟ(I)
-    - xform/[kqI]/5/
-
-    # 6: ㄔ(C) ㄘ(c) ㄣ(N) ㄧ(i)
-    - xform/[CcNi]/6/
-
-    # 7: ㄇ(m) ㄋ(n) ㄜ(e)
-    - xform/[mne]/7/
-
-    # 8: ㄏ(h) ㄒ(x) ㄠ(O) ㄡ(U)
-    - xform/[hxOU]/8/
-
-    # 9: ㄕ(S) ㄙ(s) ㄤ(K) ㄨ(u)
-    - xform/[SsKu]/9/
-
-    # 7下面: ㄈ(f) ㄌ(l) ㄝ(E) -> 對應代碼 0
-    - xform/[flE]/0/
-
-    # 9下面: ㄖ(r) ㄥ(G) ㄩ(v) -> 對應代碼 v
-    - xform/[rGv]/v/
-
-    # --- 將聲調符號轉為對應的字母 ---
+    # 聲調字母
     - xform/W/w/
     - xform/Y/y/
     - xform/Q/q/
     - xform/P/p/
-    
-    # --- 允許省略聲調 (將帶有聲調的拼音衍生出無聲調的拼音) ---
-    # 這樣在不打聲調時，所有聲調的字都能被視為「完全比對」並依照詞頻排序
+
+    # 允許省略聲調
     - derive/[wyqp]$//
+
+    # === 聲母精確碼 → T9 模糊碼 (放最後，派生不再被 xform 處理) ===
+    - derive/^b/1/
+    - derive/^d/1/
+    - derive/^g/2/
+    - derive/^j/2/
+    - derive/^Z/3/
+    - derive/^z/3/
+    - derive/^p/4/
+    - derive/^t/4/
+    - derive/^k/5/
+    - derive/^q/5/
+    - derive/^C/6/
+    - derive/^c/6/
+    - derive/^m/7/
+    - derive/^n/7/
+    - derive/^h/8/
+    - derive/^x/8/
+    - derive/^S/9/
+    - derive/^s/9/
+    - derive/^f/0/
+    - derive/^l/0/
+    - derive/^r/v/
+
+    # 簡拼
+    - derive/^(.).+$/$1/
+    - derive/^(.).+([wyqp])$/$1$2/
 
 translator:
   dictionary: terra_pinyin
@@ -154,4 +137,4 @@ key_binder:
 recognizer:
   import_preset: default
   patterns:
-    abc: "^[1234567890vwyqpBDFHJLTXV]+$"
+    abc: "^[1234567890vwyqpbdgjZzptCcmnhxSsflr]+$"
