@@ -51,7 +51,7 @@ speller:
     - xform/^wu?/u/
     - xform/iu/iou/
     - xform/ui/uei/
-    - xform/^([jqx])u/$1v/
+    - xform/^([jAB])u/$1v/
     - xform/([iuv])n/$1en/
     - xform/^zhi?/Z/
     - xform/^chi?/C/
