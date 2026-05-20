@@ -16,26 +16,26 @@ Custom RIME input method schema for T9 (3x4) Bopomofo layout, specifically optim
 ## Development Conventions
 
 ### Tone Filtering
-The schema uses specific lowercase ASCII characters to map Bopomofo tone marks, specifically chosen to avoid any conflicts with Bopomofo-to-numeric key mappings:
-- **Tone 1 (ˉ)**: Mapped to `e` (used for precise tone filtering).
+The schema uses four unique, clean, and case-insensitive alphanumeric characters for Bopomofo tone marks. These letters are not used by any Bopomofo symbol in any case (upper or lower):
+- **Tone 1 (ˉ)**: Mapped to `q`
 - **Tone 2 (ˊ)**: Mapped to `w`
-- **Tone 3 (ˇ)**: Mapped to `y`
-- **Tone 4 (ˋ)**: Mapped to `q`
-- **Tone 5 (˙)**: Mapped to `p`
+- **Tone 3 (ˇ)**: Mapped to `x`
+- **Tone 4 (ˋ)**: Mapped to `y`
+- (Tone 5 is disabled)
 
 ### Key Mapping Logic
-The `speller/algebra` in the schema file maps Bopomofo symbols to numeric keys:
-1. `ㄅㄉㄚ` -> `1`
-2. `ㄍㄐㄞ` -> `2`
-3. `ㄓㄗㄢㄦ` -> `3`
-4. `ㄆㄊㄛ` -> `4`
-5. `ㄎㄑㄟ` -> `5`
-6. `ㄔㄘㄣㄧ` -> `6`
-7. `ㄇㄋㄜ` -> `7`
-8. `ㄏㄒㄠㄡ` -> `8`
-9. `ㄕㄙㄤㄨ` -> `9`
-10. `ㄈㄌㄝ` -> `0`
-11. `ㄖㄥㄩ` -> `v`
+The `speller/algebra` in the schema file maps Bopomofo symbols to numeric keys. This version utilizes case-sensitivity for symbols (e.g., `S` for ㄕ and `s` for ㄙ) to free up the tone letters:
+1. `ㄅㄉㄚ` -> `1` (b, d, a)
+2. `ㄍㄐㄞ` -> `2` (g, j, I)
+3. `ㄓㄗㄢㄦ` -> `3` (Z, z, M, R)
+4. `ㄆㄊㄛ` -> `4` (p, t, o)
+5. `ㄎㄑㄟ` -> `5` (k, A, J)
+6. `ㄔㄘㄣㄧ` -> `6` (C, c, N, i)
+7. `ㄇㄋㄜ` -> `7` (m, n, e)
+8. `ㄏㄒㄠㄡ` -> `8` (h, B, K, L)
+9. `ㄕㄙㄤㄨ` -> `9` (S, s, O, u)
+10. `ㄈㄌㄝ` -> `0` (f, l, E)
+11. `ㄖㄥㄩ` -> `v` (r, P, v)
 
 ## Building and Usage
 1. Copy `bopomofo_t9.schema.yaml` and `terra_pinyin.dict.yaml` to your RIME user directory.

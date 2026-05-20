@@ -3,7 +3,7 @@ keyboards:
     isPrimary: false
     rows:
       - keys:
-          - action: { character: { char: "e" } }
+          - action: { character: { char: "q" } }
             width: { percentage: 0.16 }
             label: { text: "ˉ" }
           - action: { character: { char: "1" } }
@@ -25,7 +25,7 @@ keyboards:
               - label: "ㄐ"
                 action: { character: { char: "j" } }
               - label: "ㄞ"
-                action: { character: { char: "A" } }
+                action: { character: { char: "I" } }
           - action: { character: { char: "3" } }
             width: { percentage: 0.226 }
             label: { text: "ㄓㄗㄢㄦ" }
@@ -63,9 +63,9 @@ keyboards:
               - label: "ㄎ"
                 action: { character: { char: "k" } }
               - label: "ㄑ"
-                action: { character: { char: "q" } }
+                action: { character: { char: "A" } }
               - label: "ㄟ"
-                action: { character: { char: "I" } }
+                action: { character: { char: "J" } }
           - action: { character: { char: "6" } }
             width: { percentage: 0.226 }
             label: { text: "ㄔㄘㄣㄧ" }
@@ -83,7 +83,7 @@ keyboards:
             width: { percentage: 0.16 }
             label: { text: "123" }
       - keys:
-          - action: { character: { char: "y" } }
+          - action: { character: { char: "x" } }
             width: { percentage: 0.16 }
             label: { text: "ˇ" }
           - action: { character: { char: "7" } }
@@ -103,11 +103,11 @@ keyboards:
               - label: "ㄏ"
                 action: { character: { char: "h" } }
               - label: "ㄒ"
-                action: { character: { char: "x" } }
+                action: { character: { char: "B" } }
               - label: "ㄠ"
-                action: { character: { char: "O" } }
+                action: { character: { char: "K" } }
               - label: "ㄡ"
-                action: { character: { char: "U" } }
+                action: { character: { char: "L" } }
           - action: { character: { char: "9" } }
             width: { percentage: 0.226 }
             label: { text: "ㄕㄙㄤㄨ" }
@@ -116,7 +116,7 @@ keyboards:
               - label: "ㄨ"
                 action: { character: { char: "u" } }
               - label: "ㄤ"
-                action: { character: { char: "K" } }
+                action: { character: { char: "O" } }
               - label: "ㄙ"
                 action: { character: { char: "s" } }
               - label: "ㄕ"
@@ -125,7 +125,7 @@ keyboards:
             width: { percentage: 0.16 }
             label: { text: "⌫" }
       - keys:
-          - action: { character: { char: "q" } }
+          - action: { character: { char: "y" } }
             width: { percentage: 0.16 }
             label: { text: "ˋ" }
           - action: { character: { char: "0" } }
@@ -159,7 +159,7 @@ keyboards:
               - label: "ㄩ"
                 action: { character: { char: "v" } }
               - label: "ㄥ"
-                action: { character: { char: "G" } }
+                action: { character: { char: "P" } }
               - label: "ㄖ"
                 action: { character: { char: "r" } }
           - action: enter

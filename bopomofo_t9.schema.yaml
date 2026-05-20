@@ -1,7 +1,7 @@
 schema:
   schema_id: bopomofo_t9
   name: 注音九宮格
-  version: "6.0"
+  version: "10.0"
 
 engine:
   processors:
@@ -30,25 +30,24 @@ engine:
     - uniquifier
 
 speller:
-  alphabet: "1234567890vwyqpbdgjZzptkCcmnhxSsflreiuEAIOMNKGRA"
-  initials: "1234567890vwyqpbdgjZzptkCcmnhxSsflreiuEAIOMNKGRA"
+  alphabet: "abcdefghijklmnopqrstuvwxyz1234567890ABCDEIJKLMNOPSRVXZ"
+  initials: "abcdefghijklmnopqrstuvwxyz1234567890ABCDEIJKLMNOPSRVXZ"
   use_space: false
   delimiter: " '"
   algebra:
     - xform/^r5$/er5/
-    - xform/1$/X/
-    - xform/2$/W/
-    - xform/3$/Y/
-    - xform/4$/Q/
-    - xform/5$/P/
+    # 1. 先搬移可能衝突的字母 (ㄑ->A, ㄒ->B)
+    - xform/q/A/
+    - xform/x/B/
+    # 2. 基本注音轉換
     - xform/^yu/v/
     - xform/^yi?/i/
     - xform/^wu?/u/
     - xform/iu/iou/
     - xform/ui/uei/
     - xform/ong/ung/
-    - xform/ing/iG/
-    - xform/ung/uG/
+    - xform/ing/Iing/
+    - xform/ung/Uung/
     - xform/iu/v/
     - xform/^([jqx])u/$1v/
     - xform/([iuv])n/$1en/
@@ -56,28 +55,34 @@ speller:
     - xform/^chi?/C/
     - xform/^shi?/S/
     - xform/^([zcsr])i/$1/
-    - xform/ai/A/
-    - xform/ei/I/
-    - xform/ao/O/
-    - xform/ou/U/
-    - xform/ang/K/
-    - xform/eng/G/
+    - xform/ai/I/
+    - xform/ei/J/
+    - xform/ao/K/
+    - xform/ou/L/
+    - xform/ang/O/
+    - xform/eng/P/
     - xform/an/M/
     - xform/en/N/
     - xform/er/R/
     - xform/eh/E/
     - xform/([iv])e/$1E/
+    # 3. 聲調轉換 (放在最後，確保不會被前面的 xform 誤傷)
+    - xform/1$/q/
+    - xform/2$/w/
+    - xform/3$/x/
+    - xform/4$/y/
+    # 4. T9 模糊鍵映射
     - derive/a/1/
-    - derive/A/2/
+    - derive/I/2/
     - derive/[MR]/3/
     - derive/o/4/
-    - derive/I/5/
+    - derive/J/5/
     - derive/[Ni]/6/
     - derive/e/7/
-    - derive/[OU]/8/
-    - derive/[Ku]/9/
+    - derive/[KL]/8/
+    - derive/[Ou]/9/
     - derive/E/0/
-    - derive/[Gv]/v/
+    - derive/[Pv]/v/
     - derive/^b/1/
     - derive/^d/1/
     - derive/^g/2/
@@ -87,57 +92,57 @@ speller:
     - derive/^p/4/
     - derive/^t/4/
     - derive/^k/5/
-    - derive/^q/5/
+    - derive/^A/5/
     - derive/^C/6/
     - derive/^c/6/
     - derive/^m/7/
     - derive/^n/7/
     - derive/^h/8/
-    - derive/^x/8/
+    - derive/^B/8/
     - derive/^S/9/
     - derive/^s/9/
     - derive/^f/0/
     - derive/^l/0/
     - derive/^r/v/
-    - xform/W/w/
-    - xform/Y/y/
-    - xform/Q/q/
-    - xform/P/p/
-    - xform/X$/e/
-    - derive/[wyqpe]$//
+    # 5. 結尾處理
+    - derive/[qwxy]$//
     - derive/^(.).+$/$1/
 
 translator:
   dictionary: terra_pinyin
   prism: bopomofo_t9_custom
   preedit_format:
-    - xform/(.)e$/$1ˉ/
-    - xform/^p/ㄆ/
-    - xform/ p/ ㄆ/
-    - xform/'p/'ㄆ/
-    - xform/p/˙/
-    - xform/^q/ㄑ/
-    - xform/ q/ ㄑ/
-    - xform/'q/'ㄑ/
-    - xform/q/ˋ/
-    - xform/b/ㄅ/
-    - xform/d/ㄉ/
-    - xform/g/ㄍ/
-    - xform/j/ㄐ/
+    # 先轉換所有符號
+    - xform/A/ㄑ/
+    - xform/B/ㄒ/
     - xform/Z/ㄓ/
-    - xform/z/ㄗ/
-    - xform/t/ㄊ/
-    - xform/k/ㄎ/
     - xform/C/ㄔ/
-    - xform/c/ㄘ/
-    - xform/m/ㄇ/
-    - xform/n/ㄋ/
-    - xform/h/ㄏ/
-    - xform/x/ㄒ/
     - xform/S/ㄕ/
-    - xform/s/ㄙ/
+    - xform/E/ㄝ/
+    - xform/I/ㄞ/
+    - xform/J/ㄟ/
+    - xform/K/ㄠ/
+    - xform/L/ㄡ/
+    - xform/M/ㄢ/
+    - xform/N/ㄣ/
+    - xform/O/ㄤ/
+    - xform/P/ㄥ/
+    - xform/R/ㄦ/
+    - xform/b/ㄅ/
+    - xform/p/ㄆ/
+    - xform/m/ㄇ/
     - xform/f/ㄈ/
+    - xform/d/ㄉ/
+    - xform/t/ㄊ/
+    - xform/n/ㄋ/
     - xform/l/ㄌ/
+    - xform/g/ㄍ/
+    - xform/k/ㄎ/
+    - xform/h/ㄏ/
+    - xform/j/ㄐ/
+    - xform/z/ㄗ/
+    - xform/c/ㄘ/
+    - xform/s/ㄙ/
     - xform/r/ㄖ/
     - xform/i/ㄧ/
     - xform/u/ㄨ/
@@ -145,16 +150,12 @@ translator:
     - xform/a/ㄚ/
     - xform/o/ㄛ/
     - xform/e/ㄜ/
-    - xform/E/ㄝ/
-    - xform/A/ㄞ/
-    - xform/I/ㄟ/
-    - xform/O/ㄠ/
-    - xform/U/ㄡ/
-    - xform/M/ㄢ/
-    - xform/N/ㄣ/
-    - xform/K/ㄤ/
-    - xform/G/ㄥ/
-    - xform/R/ㄦ/
+    # 最後轉換聲調 (直接匹配末尾)
+    - xform/q$/ˉ/
+    - xform/w$/ˊ/
+    - xform/x$/ˇ/
+    - xform/y$/ˋ/
+    # 數字回顯
     - xform/1/ㄅ/
     - xform/2/ㄍ/
     - xform/3/ㄓ/
@@ -166,8 +167,6 @@ translator:
     - xform/9/ㄕ/
     - xform/0/ㄈ/
     - xform/v/ㄖ/
-    - xform/w/ˊ/
-    - xform/y/ˇ/
 
 key_binder:
   import_preset: default
