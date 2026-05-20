@@ -108,7 +108,7 @@ speller:
     
     # 5. 結尾處理
     - derive/[qwxy]$//
-    - abbrev/^(.).+$/$1/
+    - derive/^(.).+$/$1/
 
 translator:
   dictionary: terra_pinyin

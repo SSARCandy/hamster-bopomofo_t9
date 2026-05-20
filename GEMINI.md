@@ -37,6 +37,10 @@ The `speller/algebra` in the schema file maps Bopomofo symbols to numeric keys. 
 10. `ㄈㄌㄝ` -> `0` (f, l, E)
 11. `ㄖㄥㄩ` -> `v` (r, P, v)
 
+### Long-Phrase & Accuracy Optimizations
+- **No Predict/Simplifier**: The schema explicitly avoids the `predict_translator` and OpenCC `simplifier` filters to maximize engine performance, as `terra_pinyin.dict.yaml` is already fully Traditional Chinese.
+- **Enhanced Translator Memory**: The translator is explicitly configured with `enable_user_dict: true`, `enable_sentence: true`, and `encode_commit_history: true` to leverage the user's typing history and Viterbi decoding for accurate sentence building, while maintaining `derive/^(.).+$/$1/` to support T9 multi-character fuzzy shorthand (e.g. `24` -> `ㄐㄊ` -> `今天`).
+
 ## Building and Usage
 1. Copy `bopomofo_t9.schema.yaml` and `terra_pinyin.dict.yaml` to your RIME user directory.
 2. Add `bopomofo_t9` to your `default.custom.yaml` under `schema_list`.
