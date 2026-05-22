@@ -1,6 +1,6 @@
 # 深入大腦：`rime.lua` (T9 智慧排序) 完全解析
 
-這份文件詳細解釋了 `rime.lua` 腳本的運作原理。這個腳本是專門為了解決 T9 九宮格輸入法中「模糊輸入」與「精確匹配」之間的衝突。
+這份文件詳細解釋了 `rime.lua` 腳本的運作原理。這個腳本是專門為了解決 T9 九宮格輸入法中「模糊輸入」與「精確匹配」之間的衝突，並在 v14 版本中引入了效能優化。
 
 ## 為什麼需要這個 Lua 腳本？
 
@@ -21,72 +21,93 @@ RIME 引擎預設是依照「字頻（詞頻）」來排序候選詞。
 
 ```lua
 -- rime.lua
--- T9 智慧排序 v11 (雙模優化版)
+-- T9 智慧排序 v14 (配置常數化版)
+
+-- 配置常數
+local MAX_CANDS = 50        -- 處理候選字的最大數量
+local TONE_PATTERN = "[qwxy]$" -- 聲調判斷正則
 
 function t9_sort_filter(input, env)
     -- ...
 ```
 
-### 1. 取得輸入與判斷「定錨 (Anchored)」
+### 1. 配置常數與效能優化
+在 v14 版本中，我們將關鍵設定抽離成常數：
+- `MAX_CANDS = 50`：這是為了效能考量。RIME 在處理非常模糊的輸入時，可能會產生數百個候選字。為了避免 Lua 腳本處理過久造成打字卡頓，我們只對前 50 個最相關的候選字進行智慧排序。
+- `TONE_PATTERN = "[qwxy]$"`：定義了哪些字元代表聲調「定錨」。
+
+### 2. 取得輸入與判斷「定錨 (Anchored)」
 ```lua
     local context = env.engine.context
     local input_str = context.input
-    local input_len = #input_str
     
     -- 只有當最後一個字元是聲調時，才啟用「強制完美匹配」提拔模式
-    local is_anchored = input_str:match("[qwxy]$") ~= nil
+    local is_anchored = input_str:match(TONE_PATTERN) ~= nil
 ```
 程式碼會先讀取你目前輸入的這串代碼，並檢查最後一個字元是不是聲調鍵（我們定義的 `q, w, x, y` 分別代表一、二、三、四聲）。
 - **是 (有聲調 `is_anchored = true`)**：代表使用者敲定了精確音節（例如 `bq` -> `ㄅˉ`），進入「定錨模式」。
 - **否 (無聲調 `is_anchored = false`)**：使用者還在連續點擊數字鍵（例如連續按 `14` -> `ㄅ/ㄉ + ㄆ/ㄊ`），保持普通模糊模式。
 
-### 2. 收集與分組 (Buckets)
+### 3. 收集與分組 (Buckets)
 ```lua
-    local buckets = {}
-    local max_cov = 0
+    local cands = {}
+    local count = 0
     
-    for i = 1, #cands do
+    -- 1. 收集前 N 個候選字
+    for cand in input:iter() do
+        count = count + 1
+        cands[count] = cand
+        if count >= MAX_CANDS then break end
+    end
+```
+首先，腳本會先抓取前 50 個候選字存入記憶體陣列中。
+
+```lua
+    for i = 1, count do
         local cand = cands[i]
         local c_end = cand._end or cand["end"] or 0
-        local cov = c_end - cand.start  -- 計算這個字詞「吃掉」了多少輸入代碼 (cov = 覆蓋長度)
+        local cov = c_end - (cand.start or 0)
         
-        if cov > max_cov then max_cov = cov end
+        -- ... 分組邏輯 ...
         
-        if not buckets[cov] then 
-            buckets[cov] = { perfect = {}, others = {} } 
-        end
-        
-        -- 核心改動：只有在定錨模式下，且此字詞完美吃滿所有代碼，才放入 perfect 陣列
+        -- 核心改動：只有在定錨模式下，且此字詞完美吃滿所有目前輸入代碼，才放入 perfect 陣列
         if is_anchored and c_end == input_len then
-            table.insert(buckets[cov].perfect, cand)
+            table.insert(b.perfect, cand)
         else
-            -- 模糊連打，或是長度不完美的字，放入 others 陣列
-            table.insert(buckets[cov].others, cand)
+            table.insert(b.others, cand)
         end
     end
 ```
-腳本會遍歷 RIME 引擎初步查出來的候選字列表：
+腳本會遍歷收集到的候選字：
 1. 依據字詞「覆蓋了多長的輸入代碼 (`cov`)」進行分組，確保長詞依然優先。
 2. 將同一長度的候選詞拆成兩堆：**完美匹配 (perfect)** 與 **一般匹配 (others)**。
 
-### 3. 輸出排序 (Yield)
+### 4. 輸出排序 (Yield)
 ```lua
-    -- 輸出邏輯
-    for i = max_cov, 1, -1 do
+    -- 3. 按覆蓋度從大到小輸出
+    for i = max_cov, 0, -1 do
         local b = buckets[i]
         if b then
-            -- 定錨模式下，perfect 優先輸出
+            -- 優先輸出完美匹配
             for _, cand in ipairs(b.perfect) do yield(cand) end
-            
-            -- 非定錨模式下，perfect 陣列為空，others 保留 RIME 原始頻率順序輸出
+            -- 輸出其他匹配，保持原始 RIME 頻率順序
             for _, cand in ipairs(b.others) do yield(cand) end
         end
     end
+
+    -- 4. 保底：輸出剩餘未處理的候選字
+    for cand in input:iter() do
+        yield(cand)
+    end
 ```
-最後，重新把候選字丟回給螢幕顯示。
-由於我們在程式邏輯中，強制把 `perfect` 群組排在 `others` 前面輸出，因此能達到以下雙模效果：
+最後，重新把候選字丟回給螢幕顯示：
+1. **優先輸出**：先輸出長詞，且在定錨模式下優先輸出完美匹配字。
+2. **保底輸出**：如果一開始因為 `MAX_CANDS` 限制而沒處理到的候選字，會在最後依序輸出，確保不會遺漏任何字。
+
+## 總結
+
+透過 v14 的優化，Lua 腳本能更安全、快速地達成以下效果：
 
 - **當你打出聲調確認單一音節時**：腳本強行把「精確符合拼寫」的字拉到最前面。
-- **當你沒有打聲調（長句連打模式）**：`perfect` 群組會是空的，所有字都在 `others` 裡，這代表腳本**完全不干預排序**，完美保留 RIME 預設強大的 Viterbi 高頻連打預測。
-
-透過這個 Lua 過濾器，我們成功兼顧了「模糊長句盲打」與「單字精確輸入」的最佳打字體驗！
+- **當你沒有打聲調（長句連打模式）**：腳本完全不干預排序，保留 RIME 預設強大的 Viterbi 高頻連打預測。
+- **效能防護**：透過 `MAX_CANDS` 限制，確保即便在極端模糊輸入下，輸入法依然能保持流暢不卡頓。

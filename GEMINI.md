@@ -6,12 +6,13 @@ Custom RIME input method schema for T9 (3x4) Bopomofo layout, specifically optim
 - **Type**: RIME Input Method Schema
 - **Target Layout**: T9 (3x4) numeric grid for Traditional Chinese (Bopomofo/注音).
 - **Core Technology**: RIME engine, deployed via **Hamster (倉輸入法)** on iOS.
-- **Dictionary**: Based on `terra_pinyin` (Earth Pinyin) with tone support.
+- **Dictionary**: `bopomofo_t9.dict.yaml` (Based on `terra_pinyin` Earth Pinyin logic) with tone support.
 
 ## Key Files
 - `bopomofo_t9.schema.yaml`: The main RIME schema definition containing spelling algebra and engine configuration.
 - `t9bopomo.yaml`: Keyboard layout definition (for Hamster or similar mobile RIME clients).
-- `terra_pinyin.dict.yaml`: The source dictionary providing characters and their pinyin/bopomofo readings.
+- `bopomofo_t9.dict.yaml`: The source dictionary providing characters and their pinyin/bopomofo readings.
+- `rime.lua`: Lua script for smart candidate sorting (v14), prioritizing perfect matches when tones are used.
 
 ## Development Conventions
 
@@ -38,11 +39,11 @@ The `speller/algebra` in the schema file maps Bopomofo symbols to numeric keys. 
 11. `ㄖㄥㄩ` -> `v` (r, P, v)
 
 ### Long-Phrase & Accuracy Optimizations
-- **No Predict/Simplifier**: The schema explicitly avoids the `predict_translator` and OpenCC `simplifier` filters to maximize engine performance, as `terra_pinyin.dict.yaml` is already fully Traditional Chinese.
+- **No Predict/Simplifier**: The schema explicitly avoids the `predict_translator` and OpenCC `simplifier` filters to maximize engine performance, as `bopomofo_t9.dict.yaml` is already fully Traditional Chinese.
 - **Enhanced Translator Memory**: The translator is explicitly configured with `enable_user_dict: true`, `enable_sentence: true`, and `encode_commit_history: true` to leverage the user's typing history and Viterbi decoding for accurate sentence building, while maintaining `derive/^(.).+$/$1/` to support T9 multi-character fuzzy shorthand (e.g. `24` -> `ㄐㄊ` -> `今天`).
 
 ## Building and Usage
-1. Copy `bopomofo_t9.schema.yaml` and `terra_pinyin.dict.yaml` to your RIME user directory.
+1. Copy `bopomofo_t9.schema.yaml` and `bopomofo_t9.dict.yaml` to your RIME user directory.
 2. Add `bopomofo_t9` to your `default.custom.yaml` under `schema_list`.
 3. Deploy RIME.
 4. For Hamster iOS, upload files via Wi-Fi or iCloud sync, then redeploy.

@@ -23,11 +23,12 @@
 - 在 iOS 設備上安裝 [倉輸入法 (Hamster)](https://apps.apple.com/app/id6446617683)。
 - 下載本倉庫的所有檔案：
   - `bopomofo_t9.schema.yaml` (RIME 方案)
-  - `terra_pinyin.dict.yaml` (字典檔)
+  - `bopomofo_t9.dict.yaml` (字典檔)
   - `t9bopomo.yaml` (鍵盤佈局檔)
+  - `rime.lua` (智慧排序腳本)
 
 ### 2. 部署檔案
-將本倉庫的所有檔案（`*.yaml`）放入 Hamster 的 RIME 用戶目錄中
+將本倉庫的所有檔案（`*.yaml` 與 `rime.lua`）放入 Hamster 的 RIME 用戶目錄中
 
 ### 3. 部署鍵盤佈局 (`t9bopomo.yaml`)
 1. 將 `t9bopomo.yaml` 上傳至 Hamster 的 RIME 目錄。
