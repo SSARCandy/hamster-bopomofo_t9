@@ -308,9 +308,10 @@ local newToolbar(isDark=false, isPortrait=false, keyboardName, params={}) =
       },
     verticalCandidatesLayout: verticalCandidatesLayout,
     candidateContextMenu: [
+      // 長按候選字 → 刪詞（刪除使用者詞典裡記錯的自造詞）
       {
-        name: '簡繁',
-        action: { sendKeys: 'Control+Shift+dollar' },
+        name: '刪詞',
+        action: { sendKeys: 'Shift+Delete' },
       },
     ],
   }

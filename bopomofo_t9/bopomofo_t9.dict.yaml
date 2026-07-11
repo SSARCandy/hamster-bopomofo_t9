@@ -5,7 +5,7 @@
 
 ---
 name: bopomofo_t9
-version: "2026.07.11.3"
+version: "2026.07.11.5"
 sort: by_weight
 use_preset_vocabulary: true
 max_phrase_length: 5
@@ -3924,7 +3924,7 @@ min_phrase_weight: 100
 稞	ke1
 稟	bing3
 稠	chou2
-種	chong2
+種	chong2	1%
 種	zhong3	80%
 種	zhong4	20%
 稱	chen4	33.33%
@@ -6445,7 +6445,9 @@ min_phrase_weight: 100
 可能	ke3 neng2
 確定	que4 ding4
 一下	yi1 xia4
+一下	yi2 xia4
 一下下	yi1 xia4 xia4
+一下下	yi2 xia4 xia4
 真的	zhen1 de5
 超強	chao1 qiang2
 厲害	li4 hai4
@@ -6770,6 +6772,7 @@ min_phrase_weight: 100
 美味	mei3 wei4
 特別	te4 bie2
 一般	yi1 ban1
+一般	yi4 ban1
 普通	pu3 tong1
 踩雷	cai3 lei2
 必吃	bi4 chi1	10000
@@ -7093,62 +7096,119 @@ min_phrase_weight: 100
 
 # Added from commonly-used-chinese-characters-and-words
 一世	yi1 shi4
+一世	yi2 shi4
 一代	yi1 dai4
+一代	yi2 dai4
 一共	yi1 gong4
+一共	yi2 gong4
 一再	yi1 zai4
+一再	yi2 zai4
 一刻	yi1 ke4
+一刻	yi2 ke4
 一勞永逸	yi1 lao2 yong3 yi4
+一勞永逸	yi4 lao2 yong3 yi4
 一半	yi1 ban4
-一口氣	yi1 kou3 qi3
+一半	yi2 ban4
+一口氣	yi1 kou3 qi4
+一口氣	yi4 kou3 qi4
 一同	yi1 tong2
+一同	yi4 tong2
 一向	yi1 xiang4
+一向	yi2 xiang4
 一國兩制	yi1 guo2 liang3 zhi4
+一國兩制	yi4 guo2 liang3 zhi4
 一團	yi1 tuan2
+一團	yi4 tuan2
 一塵不染	yi1 chen2 bu2 ran3
+一塵不染	yi4 chen2 bu2 ran3
 一套	yi1 tao4
+一套	yi2 tao4
 一如	yi1 ru2
+一如	yi4 ru2
 一如既往	yi1 ru2 ji4 wang3
+一如既往	yi4 ru2 ji4 wang3
 一定	yi1 ding4
+一定	yi2 ding4
 一帶	yi1 dai4
+一帶	yi2 dai4
 一廂情願	yi1 xiang1 qing2 yuan4
+一廂情願	yi4 xiang1 qing2 yuan4
 一律	yi1 lv4
+一律	yi2 lv4
 一心	yi1 xin1
+一心	yi4 xin1
 一手	yi1 shou3
+一手	yi4 shou3
 一旁	yi1 pang2
+一旁	yi4 pang2
 一旦	yi1 dan4
+一旦	yi2 dan4
 一早	yi1 zao3
+一早	yi4 zao3
 一時	yi1 shi2
+一時	yi4 shi2
 一枝獨秀	yi1 zhi1 du2 xiu4
+一枝獨秀	yi4 zhi1 du2 xiu4
 一條龍	yi1 tiao2 long2
+一條龍	yi4 tiao2 long2
 一氣	yi1 qi3
+一氣	yi4 qi3
 一流	yi1 liu2
+一流	yi4 liu2
 一清二楚	yi1 qing1 er4 chu3
+一清二楚	yi4 qing1 er4 chu3
 一無所有	yi1 wu2 suo3 you3
+一無所有	yi4 wu2 suo3 you3
 一番	yi1 fan1
+一番	yi4 fan1
 一直	yi1 zhi2
+一直	yi4 zhi2
 一窩蜂	yi1 wo1 feng1
+一窩蜂	yi4 wo1 feng1
 一端	yi1 duan1
+一端	yi4 duan1
 一絲不苟	yi1 si1 bu2 gou3
+一絲不苟	yi4 si1 bu2 gou3
 一線	yi1 xian4
+一線	yi2 xian4
 一致	yi1 zhi4
+一致	yi2 zhi4
 一舉	yi1 ju3
+一舉	yi4 ju3
 一舉成名	yi1 ju3 cheng2 ming2
+一舉成名	yi4 ju3 cheng2 ming2
 一視同仁	yi1 shi4 tong2 ren2
+一視同仁	yi2 shi4 tong2 ren2
 一覽無遺	yi1 lan3 wu2 yi2
+一覽無遺	yi4 lan3 wu2 yi2
 一觸即發	yi1 chu4 ji2 fa1
+一觸即發	yi2 chu4 ji2 fa1
 一言不發	yi1 yan2 bu2 fa1
+一言不發	yi4 yan2 bu2 fa1
 一貫	yi1 guan4
+一貫	yi2 guan4
 一起	yi1 qi3
+一起	yi4 qi3
 一身	yi1 shen1
+一身	yi4 shen1
 一連	yi1 lian2
+一連	yi4 lian2
 一門	yi1 men2
+一門	yi4 men2
 一陣	yi1 zhen4
+一陣	yi2 zhen4
 一面	yi1 mian4
+一面	yi2 mian4
 一飛沖天	yi1 fei1 chong1 tian1
+一飛沖天	yi4 fei1 chong1 tian1
 一飲而盡	yi1 yin3 er2 jin4
+一飲而盡	yi4 yin3 er2 jin4
 一體	yi1 ti3
+一體	yi4 ti3
 一鼓作氣	yi1 gu3 zuo4 qi3
+一鼓作氣	yi4 gu3 zuo4 qi3
 一齊	yi1 qi2
+一齊	yi4 qi2
 丁屋	ding1 wu1	10000
 三角	san1 jiao3
 三角形	san1 jiao3 xing2
@@ -15479,7 +15539,9 @@ min_phrase_weight: 100
 裝設	zhuang1 she4
 裝運	zhuang1 yun4
 裝飾	zhuang1 shi4
-裡面	li3 mian4	10000
+裡面	li3 mian4	20000
+哪裡	na3 li3	30000
+那裡	na4 li3	20000
 製作	zhi4 zuo4
 製備	zhi4 bei4
 製品	zhi4 pin3
@@ -16352,7 +16414,7 @@ min_phrase_weight: 100
 逗留	dou4 liu2
 這些	zhe4 xie1
 這樣	zhe4 yang4
-這裡	zhe4 li3	10000
+這裡	zhe4 li3	30000
 通俗	tong1 su2
 通信	tong1 xin4
 通告	tong1 gao4
@@ -17721,15 +17783,18 @@ min_phrase_weight: 100
 
 # 四字詞語
 一一對應	yi1 yi1 dui4 ying4
+一一對應	yi4 yi1 dui4 ying4
 一丁不識	yi4 ding1 bu2 shi4
 一丁不識	yi4 ding1 bu4 shi2
 一不小心	yi2 bu4 xiao3 xin1
 一不拗眾	yi1 bu2 niu4 zhong4	10000
+一不拗眾	yi4 bu2 niu4 zhong4	10000
 一丘一壑	yi4 qiu1 yi2 huo4
 一丘之貉	yi4 qiu1 zhi1 he2
 一中一臺	yi4 zhong1 yi4 tai2
 一中原則	yi4 zhong1 yuan2 ze2
 一之為甚	yi1 zhi1 wei2 shen4	10000
+一之為甚	yi4 zhi1 wei2 shen4	10000
 一乾二淨	yi4 gan1 er4 jing4
 一了心願	yi4 liao3 xin1 yuan4
 一了百了	yi4 liao3 bai3 liao3
@@ -17739,6 +17804,7 @@ min_phrase_weight: 100
 一人得道	yi4 ren2 de2 dao4
 一代楷模	yi2 dai4 kai3 mo2
 一以當十	yi1 yi3 dang1 shi2
+一以當十	yi4 yi3 dang1 shi2
 一個勁兒	yi2 ge4 jin4 r5
 一個饅頭	yi2 ge5 man2 tou5
 一倡百和	yi2 chang4 bai3 he4
@@ -17768,6 +17834,7 @@ min_phrase_weight: 100
 一塌糊塗	yi4 ta1 hu2 tu2
 一塌糊塗	yi4 ta1 hu2 tu5
 一多對應	yi1 duo1 dui4 ying4
+一多對應	yi4 duo1 dui4 ying4
 一夜露水	yi2 ye4 lu4 shui5
 一大早兒	yi2 da4 zao3 r5
 一大郎當	yi2 da4 lang2 dang1
@@ -17840,6 +17907,7 @@ min_phrase_weight: 100
 一樹百穫	yi2 shu4 bo2 huo4
 一次全倒	yi2 ci4 quan2 dao3
 一次函數	yi1 ci4 han2 shu4
+一次函數	yi2 ci4 han2 shu4
 一步一踱	yi2 bu4 yi2 duo4
 一氣呵成	yi2 qi4 he1 cheng2
 一決雌雄	yi4 jue2 ci1 xiong2
@@ -17895,6 +17963,7 @@ min_phrase_weight: 100
 一紙空文	yi4 zhi3 kong1 wen2
 一級傳播	yi4 ji2 chuan2 bo4
 一索得男	yi1 suo3 de2 nan2
+一索得男	yi4 suo3 de2 nan2
 一網打盡	yi4 wang3 da3 jin4
 一線曙光	yi2 xian4 shu4 guang1
 一聲不吭	yi4 sheng1 bu4 keng1
@@ -17919,6 +17988,7 @@ min_phrase_weight: 100
 一著不慎	yi4 zhao1 bu2 shen4	10000
 一著不慎	yi4 zhuo2 bu2 shen4	10000
 一號木桿	yi1 hao4 mu4 gan1
+一號木桿	yi2 hao4 mu4 gan1
 一行三昧	yi4 hang2 san1 mei4
 一行作吏	yi4 xing2 zuo4 li4
 一衝一撞	yi4 chong1 yi2 zhuang4
@@ -32767,3 +32837,320 @@ min_phrase_weight: 100
 🎂️	9vv	10000
 😍️	86893	10000
 ✈️	0526
+一個	yi2 ge4
+一些	yi4 xie1
+不是	bu2 shi4
+一樣	yi2 yang4
+一種	yi4 zhong3
+一點	yi4 dian3
+不要	bu2 yao4
+不會	bu2 hui4
+一次	yi2 ci4
+一定要	yi2 ding4 yao4
+一個人	yi2 ge4 ren2
+一年	yi4 nian2
+一切	yi2 qie4
+一部分	yi2 bu4 fen1
+一天	yi4 tian1
+一邊	yi4 bian1
+不到	bu2 dao4
+一款	yi4 kuan3
+一家	yi4 jia1
+一開始	yi4 kai1 shi3
+一個月	yi2 ge4 yue4
+一張	yi4 zhang1
+一位	yi2 wei4
+一份	yi2 fen4
+一條	yi4 tiao2
+一圈	yi4 quan1
+一句話	yi2 ju4 hua4
+一句	yi2 ju4
+一遍	yi2 bian4
+一段	yi2 duan4
+一本	yi4 ben3
+一直在	yi4 zhi2 zai4
+不再	bu2 zai4
+一部	yi2 bu4
+一個是	yi2 ge4 shi4
+一方面	yi4 fang1 mian4
+一場	yi4 chang3
+一是	yi2 shi4
+一定是	yi2 ding4 shi4
+一堆	yi4 dui1
+一篇	yi4 pian1
+不大	bu2 da4
+一點點	yi4 dian3 dian3
+一般是	yi4 ban1 shi4
+不算	bu2 suan4
+一般的	yi4 ban1 de5
+一週	yi4 zhou1
+一定會	yi2 ding4 hui4
+不是說	bu2 shi4 shuo1
+一波	yi4 bo1
+一塊	yi2 kuai4
+一隻	yi4 zhi1
+一把	yi4 ba3
+不像	bu2 xiang4
+不在	bu2 zai4
+不願意	bu2 yuan4 yi4
+一段時間	yi2 duan4 shi2 jian1
+一生	yi4 sheng1
+一輩子	yi2 bei4 zi3
+一名	yi4 ming2
+一看	yi2 kan4
+一會	yi2 hui4
+不適合	bu2 shi4 he2
+一臺	yi4 tai2
+一系列	yi2 xi4 lie4
+不做	bu2 zuo4
+一個問題	yi2 ge4 wen4 ti2
+一路	yi2 lu4
+一批	yi4 pi1
+不太	bu2 tai4
+一件	yi2 jian4
+一項	yi2 xiang4
+一首	yi4 shou3
+一人	yi4 ren2
+一個個	yi2 ge4 ge4
+不去	bu2 qu4
+一片	yi2 pian4
+一方	yi4 fang1
+一直是	yi4 zhi2 shi4
+不論	bu2 lun4
+一類	yi2 lei4
+不易	bu2 yi4
+一大堆	yi2 da4 dui1
+一支	yi4 zhi1
+一顆	yi4 ke1
+不變	bu2 bian4
+一層	yi4 ceng2
+一件事	yi2 jian4 shi4
+一度	yi2 du4
+不就	bu2 jiu4
+一副	yi2 fu4
+一本書	yi4 ben3 shu1
+一組	yi4 zu3
+不代表	bu2 dai4 biao3
+不讓	bu2 rang4
+一道	yi2 dao4
+不看	bu2 kan4
+不就是	bu2 jiu4 shi4
+一下子	yi2 xia4 zi3
+一般人	yi4 ban1 ren2
+不會有	bu2 hui4 you3
+一個人的	yi2 ge4 ren2 de5
+一聲	yi4 sheng1
+一次性	yi2 ci4 xing4
+不至於	bu2 zhi4 yu2
+一筆	yi4 bi3
+不被	bu2 bei4
+不那麼	bu2 na4 yao1
+不論是	bu2 lun4 shi4
+不是很	bu2 shi4 hen3
+不太好	bu2 tai4 hao3
+一會兒	yi2 hui4 ren2
+不再是	bu2 zai4 shi4
+一個好的	yi2 ge4 hao3 de5
+一絲	yi4 si1
+一篇文章	yi4 pian1 wen2 zhang1
+一口	yi4 kou3
+一頓	yi2 dun4
+一切都	yi4 qie1 dou1
+不重要	bu2 zhong4 yao4
+不是一個	bu2 shi4 yi1 ge4
+一直到	yi4 zhi2 dao4
+一級	yi4 ji2
+一個小時	yi2 ge4 xiao3 shi2
+不見	bu2 jian4
+一般都	yi4 ban1 dou1
+一說	yi4 shuo1
+一步	yi2 bu4
+一股	yi4 gu3
+一一	yi4 yi1
+一戰	yi2 zhan4
+一步步	yi2 bu4 bu4
+一根	yi4 gen1
+一輛	yi2 liang4
+一大	yi2 da4
+一些人	yi4 xie1 ren2
+不斷地	bu2 duan4 di4
+一座	yi2 zuo4
+一直以來	yi4 zhi2 yi3 lai2
+不願	bu2 yuan4
+一個新的	yi2 ge4 xin1 de5
+不確定	bu2 que4 ding4
+不信	bu2 xin4
+一枚	yi4 mei2
+不愛	bu2 ai4
+不受	bu2 shou4
+不動	bu2 dong4
+一眼	yi4 yan3
+一方面是	yi4 fang1 mian4 shi4
+一般情況下	yi4 ban1 qing2 kuang4 xia4
+不具備	bu2 ju4 bei4
+不帶	bu2 dai4
+一瓶	yi4 ping2
+不確定性	bu2 que4 ding4 xing4
+一首歌	yi4 shou3 ge1
+一小時	yi4 xiao3 shi2
+一所	yi4 suo3
+一杯	yi4 bei1
+一幕	yi2 mu4
+一輪	yi4 lun2
+一分鐘	yi4 fen1 zhong1
+一兩個	yi4 liang3 ge4
+一次次	yi2 ci4 ci4
+不在乎	bu2 zai4 hu1
+不住	bu2 zhu4
+不上	bu2 shang4
+一對	yi2 dui4
+不要再	bu2 yao4 zai4
+不利於	bu2 li4 yu2
+一對一	yi2 dui4 yi1
+不太一樣	bu2 tai4 yi1 yang4
+一件事情	yi2 jian4 shi4 qing2
+一味	yi2 wei4
+一直都是	yi4 zhi2 dou1 shi4
+一來	yi4 lai2
+一個星期	yi2 ge4 xing1 qi2
+一臉	yi4 lian3
+一個字	yi2 ge4 zi4
+不會再	bu2 hui4 zai4
+不靠譜	bu2 kao4 pu3
+不要太	bu2 yao4 tai4
+不要去	bu2 yao4 qu4
+一萬	yi2 wan4
+不禁	bu2 jin4
+一雙	yi4 shuang1
+一到	yi2 dao4
+一加	yi4 jia1
+一期	yi4 qi2
+不會出現	bu2 hui4 chu1 xian4
+一頭	yi4 tou2
+一員	yi4 yuan2
+一分	yi4 fen1
+不在於	bu2 zai4 yu2
+一大批	yi2 da4 pi1
+一些問題	yi4 xie1 wen4 ti2
+一詞	yi4 ci2
+一處	yi2 chu4
+一行	yi4 xing2
+不下	bu2 xia4
+一直沒有	yi4 zhi2 mei2 you3
+一秒	yi4 miao3
+不會被	bu2 hui4 bei4
+一事	yi2 shi4
+一回	yi4 hui2
+一張圖	yi4 zhang1 tu2
+一聽	yi4 yin3
+一系列的	yi2 xi4 lie4 de5
+一個國家	yi2 ge4 guo2 jia1
+不要把	bu2 yao4 ba3
+一幫	yi4 bang1
+一側	yi2 ce4
+一家人	yi4 jia1 ren2
+不放	bu2 fang4
+不太可能	bu2 tai4 ke3 neng2
+一鍵	yi2 jian4
+不要說	bu2 yao4 shuo1
+一步一步	yi2 bu4 yi1 bu4
+一段話	yi2 duan4 hua4
+一檔	yi2 dang4
+一刀	yi4 dao1
+不是我	bu2 shi4 wo3
+不正常	bu2 zheng4 chang2
+不要用	bu2 yao4 yong4
+一個一個	yi2 ge4 yi1 ge4
+一切都是	yi4 qie1 dou1 shi4
+一分錢	yi4 fen1 qian2
+一齣	yi4 chu1
+一定程度	yi2 ding4 cheng2 du4
+一出	yi4 chu1
+不是你	bu2 shi4 ni3
+一起去	yi4 qi3 qu4
+不是很好	bu2 shi4 hen3 hao3
+一趟	yi2 tang4
+一致性	yi2 zhi4 xing4
+一髮	yi2 fa4
+一直都	yi4 zhi2 dou1
+一發	yi4 fa1
+一年後	yi4 nian2 hou4
+一上來	yi2 shang4 lai2
+一半的	yi2 ban4 de5
+一年多	yi4 nian2 duo1
+一夜	yi2 ye4
+一笑	yi2 xiao4
+一間	yi4 jian1
+一瞬間	yi2 shun4 jian1
+一百	yi4 bai3
+一碗	yi4 wan3
+一通	yi4 tong1
+不要被	bu2 yao4 bei4
+不配	bu2 pei4
+不叫	bu2 jiao4
+一幅	yi4 fu2
+一個詞	yi2 ge4 ci2
+一腳	yi4 jiao3
+不認識	bu2 ren4 shi2
+一個地方	yi2 ge4 di4 fang1
+一樓	yi4 lou2
+一條路	yi4 tiao2 lu4
+一整天	yi4 zheng3 tian1
+一兩年	yi4 liang3 nian2
+不是所有	bu2 shi4 suo3 you3
+一晚上	yi4 wan3 shang4
+一個普通	yi2 ge4 pu3 tong1
+一下就	yi2 xia4 jiu4
+一號	yi2 hao4
+不是嗎	bu2 shi4 ma5
+一斤	yi4 jin1
+一點也不	yi4 dian3 ye3 bu4
+一些東西	yi4 xie1 dong1 xi1
+一日	yi2 ri4
+一個故事	yi2 ge4 gu4 shi4
+不會像	bu2 hui4 xiang4
+一定能	yi2 ding4 neng2
+一千	yi4 qian1
+不過現在	bu2 guo4 xian4 zai4
+不便	bu2 bian4
+一時間	yi4 shi2 jian1
+不見得	bu2 jian4 de2
+一起玩	yi4 qi3 wan2
+一點兒	yi4 dian3 ren2
+一章	yi4 zhang1
+不亞於	bu2 ya4 yu2
+不記得	bu2 ji4 de2
+不夠好	bu2 gou4 hao3
+不用再	bu2 yong4 zai4
+不正確	bu2 zheng4 que4
+不到位	bu2 dao4 wei4
+一點一點	yi4 dian3 yi1 dian3
+一盤	yi4 pan2
+不夠用	bu2 gou4 yong4
+不要在	bu2 yao4 zai4
+一集	yi4 ji2
+一無所知	yi4 wu2 suo3 zhi1
+一個朋友	yi2 ge4 peng2 you3
+一路上	yi2 lu4 shang4
+一個圈	yi2 ge4 quan1
+一致的	yi2 zhi4 de5
+不過這個	bu2 guo4 zhe4 ge4
+一定有	yi2 ding4 you3
+不在意	bu2 zai4 yi4
+一節	yi4 jie2
+不用多說	bu2 yong4 duo1 shuo1
+一生的	yi4 sheng1 de5
+不要讓	bu2 yao4 rang4
+一月	yi2 yue4
+不用說	bu2 yong4 shuo1
+一級市場	yi4 ji2 shi4 chang3
+一輛車	yi2 liang4 che1
+一拳	yi4 quan2
+一併	yi2 bing4
+一並	yi2 bing4
+不是在	bu2 shi4 zai4
+一招	yi4 zhao1
+一直沒	yi4 zhi2 mei2
+一年半	yi4 nian2 ban4
+一丟丟	yi4 diu1 diu1
+一體化	yi4 ti3 hua4

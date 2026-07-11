@@ -58,6 +58,29 @@ def static_checks():
           f'{len(bad_space)} 行' if bad_space else '')
 
 
+# ---------- 0. py2t9 轉換器自我檢查 ----------
+PY2T9_CASES = [
+    # (拼音音節, 期望鍵序)  對照 schema speller/algebra
+    ('hao3',   '88x'),   # 好 = ㄏㄠˇ
+    ('xiang4', '869y'),  # 像 = ㄒㄧㄤˋ
+    ('qu4',    '5vy'),   # 去 = ㄑㄩˋ
+    ('hui4',   '895y'),  # 會 = ㄏㄨㄟˋ
+    ('yong4',  'vvy'),   # 用 = ㄩㄥˋ
+    ('zhi1',   '3q'),    # 之 = ㄓ
+    ('er2',    '3w'),    # 兒 = ㄦˊ
+    ('de5',    '17'),    # 的 = ㄉㄜ（輕聲無調）
+    ('weng1',  '9vq'),   # 翁 = ㄨㄥ
+    ('jiu4',   '268y'),  # 就 = ㄐㄧㄡˋ
+]
+
+
+def py2t9_checks():
+    print('== py2t9 轉換器 ==')
+    for syl, expect in PY2T9_CASES:
+        got = py2t9.syl_to_keys_toned(syl)
+        check(f'{syl} → {expect}', got == expect, f'實際 {got}' if got != expect else '')
+
+
 # ---------- 2. 關鍵字詞排名 ----------
 RANK_CASES = [
     # (鍵序, 目標, 容許最差名次, 說明)
@@ -69,12 +92,52 @@ RANK_CASES = [
     ('4293',   '🇹🇼',  5,  'emoji 純數字鍵碼'),
     ('v16',    '🇯🇵',  3,  'emoji 含 v 鍵碼'),
     ('96w77',  '什麼', 3,  '什 shen2 讀音修正'),
+    # 特殊機制
+    ('17',     '的',   1,  '輕聲字無調輸入'),
+    ('07',     '了',   1,  '輕聲字無調輸入'),
+    ('iq',     '一',   1,  '精確韻母 ㄧˉ'),
+    ('Mq',     '安',   1,  '精確韻母 ㄢˉ'),
+    ('B6q',    '西',   3,  '精確聲母 ㄒ+模糊 ㄧ'),
+    ('24',     '今天', 3,  '單鍵簡拼（核心習慣）'),
+    ('94x',    '我',   1,  '高頻單字'),
+]
+
+# 詞彙排名（拼音寫法，字典讀音格式：一律本調，輕聲寫 5）
+WORD_RANK_CASES = [
+    # (拼音, 目標, 容許最差名次, 說明)
+    ('xia4 zai3',        '下載',   5, '救回詞'),
+    ('liao3 jie3',       '了解',   3, '救回詞'),
+    ('jue2 de5',         '覺得',   3, '輕聲詞'),
+    ('dou4 fu5',         '豆腐',   8, '輕聲詞'),
+    ('zhen1 de5',        '真的',   3, '輕聲詞'),
+    ('na3 li3',          '哪裡',   3, '臺灣用字（essay 只有裏）'),
+    ('zhi2 xing2 xu4',   '執行緒', 3, '工程詞彙'),
+    ('huan2 jing4 bian4 shu4', '環境變數', 3, '工程詞彙'),
+    ('mei3 gu3 ying2 yu2', '每股盈餘', 3, '投資詞彙'),
+    ('tai2 wan1',        '臺灣',   3, ''),
+    ('wen4 ti2',         '問題',   3, ''),
+    ('xian4 zai4',       '現在',   3, ''),
+    # 變調讀音變體（v2026.07.11.5：一+四聲→yi2、一+一二三聲→yi4、不+四聲→bu2）
+    ('yi2 xia4',         '一下',   3, '變調輸入'),
+    ('yi4 qi3',          '一起',   3, '變調輸入'),
+    ('yi2 ge4',          '一個',   3, '變調輸入'),
+    ('bu2 yao4',         '不要',   3, '變調輸入'),
+    ('bu2 shi4',         '不是',   3, '變調輸入'),
+    ('yi4 dian3',        '一點',   3, '變調輸入'),
+    ('yi2 qie4',         '一切',   3, '變調輸入'),
 ]
 
 
 def rank_checks():
     print('== 關鍵字詞排名 ==')
     for keys, target, worst, why in RANK_CASES:
+        results, _ = bench.test_input(keys, quiet=True)
+        r = rank_of(results, target)
+        ok = r is not None and r < worst
+        check(f'{keys} → {target} 前 {worst} 名（{why}）', ok,
+              f'實際第 {r + 1} 名' if r is not None else '不在候選中')
+    for py, target, worst, why in WORD_RANK_CASES:
+        keys = py2t9.sentence_to_keys_toned(py)
         results, _ = bench.test_input(keys, quiet=True)
         r = rank_of(results, target)
         ok = r is not None and r < worst
@@ -96,6 +159,16 @@ SENTENCE_CASES = [
     ('已經到家了',       'yi3 jing1 dao4 jia1 le5',               False),
     ('等一下打給你',     'deng3 yi1 xia4 da3 gei3 ni3',           False),
     ('晚餐想吃什麼',     'wan3 can1 xiang3 chi1 shen2 me5',       True),
+    ('我覺得沒有問題',   'wo3 jue2 de5 mei2 you3 wen4 ti2',       False),
+    ('現在幾點',         'xian4 zai4 ji3 dian3',                  False),
+    ('沒有問題',         'mei2 you3 wen4 ti2',                    False),
+    ('明天見',           'ming2 tian1 jian4',                     False),
+    ('辛苦了',           'xin1 ku3 le5',                          False),
+    ('你在哪裡',         'ni3 zai4 na3 li3',                      False),
+    # 我快到了：LM 把「會(kuai4,會計)」的詞頻誤用在「我會」上，猜成「我會到了」
+    ('我快到了',         'wo3 kuai4 dao4 le5',                    True),
+    # 這樣可以嗎：「這也是」與「這樣」同鍵競爭
+    ('這樣可以嗎',       'zhe4 yang4 ke3 yi3 ma5',                True),
 ]
 
 
@@ -137,6 +210,7 @@ def log_checks():
 
 
 def main():
+    py2t9_checks()
     static_checks()
     bench.init()
     rank_checks()
