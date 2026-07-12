@@ -34,6 +34,11 @@
    傳到手機後點擊該檔案即可導入元書。打包前需先產生編譯產物
    （`config.yaml`、`light/`、`dark/`，指令見下方「修改與重新編譯」；
    這些產物不進版控）。
+
+   > 💡 上述編譯＋打包可用一鍵工具完成（在 repo 根目錄執行）：
+   > `python scripts/package_skin.py`
+   > 會自動編譯並產生 `T9注音九宮格.cskin`；`-n` 改皮膚名稱、`-o` 改輸出位置，
+   > 詳見 `python scripts/package_skin.py -h`。
 3. 在元書中選用此皮膚。
 
 ## 修改與重新編譯
