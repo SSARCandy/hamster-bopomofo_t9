@@ -208,6 +208,6 @@ recognizer:
 # 資料存在使用者目錄 predict.userdb，剛安裝時沒有聯想、打幾次就會出現）
 user_predict:
   db_name: predict
-  mobile_predict_style: post   # post=上屏後跳出聯想 / reorder=只做輸入調頻 / off=關閉
+  mobile_predict_style: reorder   # post=上屏後跳出聯想 / reorder=只做輸入調頻 / off=關閉
   max_candidates: 6            # 一次最多顯示幾個聯想詞
   max_predictions: 3           # 連續聯想最多幾輪
