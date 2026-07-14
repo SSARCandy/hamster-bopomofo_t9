@@ -341,10 +341,13 @@ end
 local P = {}
 function P.init(env)
     load_config(env) 
-    env.is_t9 = true  -- bopomofo_t9 固定為 T9 佈局（原版靠 algebra 標記偵測，此處硬編）
-    if wanxiang.get_input_method_type then
-        env.is_t9 = (wanxiang.get_input_method_type(env) == "t9")
-    end
+    -- bopomofo_t9 固定為 T9 佈局，硬編為 true。
+    -- 注意：不可改用 wanxiang.get_input_method_type() 偵測——它靠掃描
+    -- speller/algebra 裡的萬象標記字元（T9 為 "ⅱ"）判斷，而本方案的
+    -- algebra 並無此標記，會回傳 "unknown" 使 is_t9 變成 false。一旦為
+    -- false，預測候選顯示時若不選、直接按注音鍵（送出數字碼 1-0），
+    -- P.func 會走到 commit_text(digit) 把數字直接上屏（見下方按鍵處理）。
+    env.is_t9 = true
     local db = get_db(env)
     local now = os_time()
     local CLEAN_INTERVAL = 259200  --3天
