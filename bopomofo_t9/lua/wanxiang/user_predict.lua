@@ -769,6 +769,15 @@ function P.func(key, env)
             return 1
         end
         
+        -- 空白鍵：若當前反白的是聯想候選，交給 selector 選字上屏
+        -- （而非打斷聯想輸出一個字面空格）。選完會透過 commit_cb 續發下一輪聯想。
+        if key.keycode == 0x20 then
+            local cand = ctx:get_selected_candidate()
+            if cand and cand.type == "predict" then
+                return 2
+            end
+        end
+
         -- 任何其他按键都打断联想
         ctx:clear()
         reset_memory_chain(env, "按键打断联想")
