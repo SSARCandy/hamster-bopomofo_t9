@@ -1,7 +1,7 @@
 schema:
   schema_id: bopomofo_t9
   name: 注音九宮格
-  version: "10.4"
+  version: "10.5"
 
 # 自動聯想開關（萬象 user_predict.lua 實作，見 README）
 switches:
@@ -211,3 +211,5 @@ user_predict:
   mobile_predict_style: post   # post=上屏後跳出聯想 / reorder=只做輸入調頻 / off=關閉
   max_candidates: 6            # 一次最多顯示幾個聯想詞
   max_predictions: 3           # 連續聯想最多幾輪
+  context_timeout: 30000       # 前後兩次上屏間隔在此毫秒內才視為同一語境並學習關聯
+                               # （lua 預設 5000ms，T9 打一個詞常超過 5 秒導致學不到東西）

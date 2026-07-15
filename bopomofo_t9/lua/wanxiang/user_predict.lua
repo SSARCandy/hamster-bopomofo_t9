@@ -443,8 +443,14 @@ function P.init(env)
         local text_chars = get_utf8_chars(text)
         local len_text = #text_chars
 
-        -- 基础规则：单次上屏超过 4 个字不记录
-        if len_text > 4 then should_record = false end
+        -- 基础规则：单次上屏超过 4 个字不作为联想「目标」学习，
+        -- 但仍要更新记忆链当「上文」：整句上屏后句尾（P-Gram 后缀）
+        -- 接得上下一个词，否则整句流使用者的联想资料库永远是空的。
+        local context_only = false
+        if len_text > 4 then
+            should_record = false
+            context_only = true
+        end
         
         -- 基础规则：标点与助词白名单隔离
         if should_record and is_tone_symbol(text) then
@@ -528,12 +534,17 @@ function P.init(env)
         -- 调用逻辑解耦
         if should_record then
             if is_terminal_symbol then
-                reset_memory_chain(env, "终结符上屏完毕") 
+                reset_memory_chain(env, "终结符上屏完毕")
             else
                 insert(history, text)
                 if #history > 2 then remove(history, 1) end
                 last_commit = text
             end
+        elseif context_only then
+            -- 整句只当上文：写入记忆链，后续查询/学习自动取后缀
+            insert(history, text)
+            if #history > 2 then remove(history, 1) end
+            last_commit = text
         end
         
         -- 事务入栈：把本次写库的记录推入回滚栈（最大保留 3 级）
@@ -754,14 +765,21 @@ function P.func(key, env)
     end
     
     if is_predicting then
-        -- 数字键打断联想并上屏数字
+        -- T9：注音鍵（數字鍵、v 鍵、精確注音字母）＝使用者放棄聯想、開始打下一個詞。
+        -- 只結束聯想狀態，「不可」呼叫 reset_memory_chain 清掉上下文——
+        -- 記憶鏈要留著，下一個詞上屏時才學得到「上一詞→使用者真正想打的詞」。
+        -- （原版在這裡清記憶鏈，導致聯想猜錯的當下永遠學不到正確接續，
+        -- 舊聯想反覆霸屏、新關聯進不了資料庫。）
+        if env.is_t9 and (s_match(repr, "^[0-9a-zA-Z]$") or s_match(repr, "^KP_[0-9]$")) then
+            ctx:clear()
+            predict_count = 0
+            is_predicting = false
+            pending_cands = nil
+            env.need_push = false
+            return 2
+        end
+        -- 非 T9：数字键打断联想并上屏数字
         if s_match(repr, "^[0-9]$") or s_match(repr, "^KP_[0-9]$") then
-            if env.is_t9 then
-                -- T9: 数字键是编码，放行
-                env.engine.context:clear()
-                reset_memory_chain(env, "T9数字放行起音节")
-                return 2
-            end
             local digit = s_match(repr, "%d")
             ctx:clear()
             reset_memory_chain(env, "数字打断联想并上屏")
