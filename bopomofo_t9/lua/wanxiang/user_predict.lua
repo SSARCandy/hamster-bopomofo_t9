@@ -71,8 +71,23 @@ local PARTICLE_WHITELIST = {
     ["过"]=true, ["好"]=true, ["行"]=true, ["对"]=true, ["成"]=true
 }
 
-local function is_tone_symbol(text) 
-    return s_match(text, "^[！？，。～]+$") ~= nil 
+local function is_tone_symbol(text)
+    return s_match(text, "^[！？，。～]+$") ~= nil
+end
+
+-- 標點鍵映射：皮膚（空格長按等）送出 ASCII 標點鍵，由此轉成全形上屏。
+-- 走按鍵而非前端 symbol 動作，聯想彈窗開著時才攔得住（symbol 動作會
+-- 先把反白的聯想詞連帶上屏）。
+local SYMBOL_MAP = { ["?"] = "？", ["!"] = "！", [","] = "，", ["."] = "。", ["\\"] = "、" }
+-- 原樣上屏的 ASCII 符號鍵（= 鍵與其長按、# @）：也要在 key_binder 之前
+-- 攔下，否則組字中會被預設綁定（equal → 翻頁）吃掉。
+local RAW_SYMBOL_KEYS = {
+    ["="] = true, [">"] = true, ["<"] = true, ["%"] = true,
+    ["~"] = true, ["$"] = true, ["#"] = true, ["@"] = true,
+}
+-- 回傳按鍵應上屏的符號文字；非符號鍵回傳 nil
+local function symbol_output(repr)
+    return SYMBOL_MAP[repr] or (RAW_SYMBOL_KEYS[repr] and repr) or nil
 end
 
 local utf8_len = utf8 and utf8.len or function(str)
@@ -799,10 +814,39 @@ function P.func(key, env)
             end
         end
 
+        -- 符號鍵：關閉聯想彈窗（不上屏聯想詞），只上屏符號，並斷開語境
+        -- （reset 須在 clear 之前，避免 update_cb 誤判「外部清空輸入框」）。
+        local pred_sym = symbol_output(repr)
+        if pred_sym then
+            reset_memory_chain(env, "符號上屏斷開語境")
+            ctx:clear()
+            env.engine:commit_text(pred_sym)
+            return 1
+        end
+
         -- 任何其他按键都打断联想
         ctx:clear()
         reset_memory_chain(env, "按键打断联想")
         return 2
+    end
+
+    -- 組字中按符號鍵（空格長按選標點、= 鍵）：先上屏當前反白候選，再上屏符號
+    -- （重現前端 symbol 動作「先上屏再插入符號」的行為，但可被上面的聯想分支攔截）
+    local composing_sym = symbol_output(repr)
+    if composing_sym and ctx:is_composing() then
+        if ctx.commit then
+            ctx:commit()   -- 走正常上屏流程（觸發 commit_notifier，照常學習）
+        else
+            -- 防禦：若 librime-lua 未暴露 Context::Commit，退化為直接上屏文字
+            local txt = ctx:get_commit_text()
+            ctx:clear()
+            if txt and txt ~= "" then env.engine:commit_text(txt) end
+        end
+        -- 符號斷開語境，並取消上屏後剛觸發的聯想（含已推入的佔位符）
+        reset_memory_chain(env, "符號上屏斷開語境")
+        ctx:clear()
+        env.engine:commit_text(composing_sym)
+        return 1
     end
 
     if not ctx:is_composing() then
@@ -815,9 +859,10 @@ function P.func(key, env)
             reset_memory_chain(env, "非输入状态排版打断")
             return 2 
         end
-        local symbol_map = { ["?"] = "？", ["!"] = "！", [","] = "，", ["."] = "。" }
-        if symbol_map[repr] then
-            env.engine:commit_text(symbol_map[repr])
+        local idle_sym = symbol_output(repr)
+        if idle_sym then
+            reset_memory_chain(env, "符號上屏斷開語境")
+            env.engine:commit_text(idle_sym)
             return 1
         end
     end

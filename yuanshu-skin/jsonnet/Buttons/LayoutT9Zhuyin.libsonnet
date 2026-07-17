@@ -214,17 +214,19 @@ local commonButtons = import './Common.libsonnet';
   // ===== 右側欄功能鍵 =====
 
   // 等號鍵：直接上屏，長按選其他符號
+  // 同空格長按：走 character 進 RIME，避免 symbol 動作在聯想彈窗開著時
+  // 把反白的聯想詞連帶上屏（這些 ASCII 鍵 RIME 不消化，前端會原樣插入）。
   equalButton: {
     name: 'equalButton',
     params: {
-      action: { symbol: '=' },
+      action: { character: '=' },
       # 右緣按鍵：依 v2 視覺順序（> < % ~ $），預設選最右的 $
       longPress: [
-        { text: '>', action: { symbol: '>' } },
-        { text: '<', action: { symbol: '<' } },
-        { text: '%', action: { symbol: '%' } },
-        { text: '~', action: { symbol: '~' } },
-        { text: '$', action: { symbol: '$' }, selected: true },
+        { text: '>', action: { character: '>' } },
+        { text: '<', action: { character: '<' } },
+        { text: '%', action: { character: '%' } },
+        { text: '~', action: { character: '~' } },
+        { text: '$', action: { character: '$' }, selected: true },
       ],
     },
   },
@@ -246,19 +248,21 @@ local commonButtons = import './Common.libsonnet';
   },
 
   // 空格鍵：長按快速輸入標點
+  // 標點走 character 按鍵進 RIME（user_predict.lua 的 SYMBOL_MAP 轉全形），
+  // 不用 symbol 動作——symbol 在聯想彈窗開著時會先把反白的聯想詞連帶上屏。
   t9SpaceButton: {
     name: 'spaceButton',
     params: {
       action: 'space',
       systemImageName: 'space',
       longPress: [
-        { text: '？', action: { symbol: '？' }, selected: true },
-        { text: '！', action: { symbol: '！' } },
-        { text: '，', action: { symbol: '，' } },
-        { text: '。', action: { symbol: '。' } },
-        { text: '、', action: { symbol: '、' } },
-        { text: '#', action: { symbol: '#' } },
-        { text: '@', action: { symbol: '@' } },
+        { text: '？', action: { character: '?' }, selected: true },
+        { text: '！', action: { character: '!' } },
+        { text: '，', action: { character: ',' } },
+        { text: '。', action: { character: '.' } },
+        { text: '、', action: { character: '\\' } },
+        { text: '#', action: { character: '#' } },
+        { text: '@', action: { character: '@' } },
       ],
     },
   },
